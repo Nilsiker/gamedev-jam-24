@@ -8,7 +8,7 @@ script = ExtResource("1_k1d2b")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -5.96046e-08, -2.98023e-08, 0, 1, 4.17233e-07, -2.98023e-08, 0, 1, -0.0573279, 0.0672805, 4.99902)
-doppler_tracking = 1
 projection = 1
 size = 4.0
-near = 0.001
+near = 1.507
+far = 100.0

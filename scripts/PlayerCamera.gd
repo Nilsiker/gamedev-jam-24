@@ -23,4 +23,4 @@ func _unhandled_input(event):
 			$Camera3D.size += .2
 		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			$Camera3D.size -= .2
-		$Camera3D.size = clampf($Camera3D.size, 2, 4)
+		$Camera3D.size = clampf($Camera3D.size, 2, 6)

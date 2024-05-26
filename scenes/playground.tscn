@@ -1,0 +1,184 @@
+[gd_scene load_steps=17 format=3 uid="uid://b8b8pxevb30sr"]
+
+[ext_resource type="Material" uid="uid://dcgqd4r7xk7k2" path="res://addons/colored_dithering/resources/material_colored_dithering.tres" id="1_2aag8"]
+[ext_resource type="Script" path="res://addons/colored_dithering/scripts/colored_dithering.gd" id="2_4eiex"]
+[ext_resource type="AudioStream" uid="uid://x1qryonfmpn" path="res://assets/loop.wav" id="3_2xvka"]
+[ext_resource type="PackedScene" uid="uid://bcqk16go8p0tc" path="res://scenes/player.tscn" id="4_s7rld"]
+[ext_resource type="PackedScene" uid="uid://csgyoe480gpqw" path="res://scenes/camera_pivot.tscn" id="5_iisj2"]
+[ext_resource type="PackedScene" uid="uid://di6uh68bstbkv" path="res://scenes/grave.tscn" id="6_liunr"]
+[ext_resource type="PackedScene" uid="uid://bhn4oyph3v5g8" path="res://scenes/statics/brick_wall.tscn" id="7_k2376"]
+[ext_resource type="PackedScene" uid="uid://dnylc7nrqrfq5" path="res://scenes/statics/brick_wall_curve_small.tscn" id="8_m2xq1"]
+[ext_resource type="PackedScene" uid="uid://cwppy062i8bbn" path="res://scenes/statics/brick_wall_end.tscn" id="9_xtl42"]
+[ext_resource type="PackedScene" uid="uid://uih6jsqm16j4" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pine.fbx" id="10_x11my"]
+[ext_resource type="PackedScene" uid="uid://cb5p62jsx3cek" path="res://scenes/warden.tscn" id="11_10000"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_5trqg"]
+vertices = PackedVector3Array(-24.7, 0.2, -1, -9.7, 0.2, -1, -9.1, 0.2, -2.8, -7.6, 0.2, -24.7, -24.7, 0.2, -24.7, -9.1, 0.2, -2.8, -7.3, 0.2, -2.8, -7.6, 0.2, -24.7, -7.3, 0.2, -2.8, -5.2, 0.2, -2.8, -4.9, 0.2, -24.7, -7.6, 0.2, -24.7, -4.9, 0.2, -24.7, -5.2, 0.2, -2.8, -3.4, 0.2, -2.8, -4.9, 0.2, -24.7, -3.4, 0.2, -2.8, -3.1, 0.2, -1, 24.8, 0.2, -1, 24.8, 0.2, -24.7, -4, 0.2, 0.500002, -3.4, 0.2, 0.200001, -3.7, 0.2, -0.4, -4.3, 0.2, -0.699999, -6.4, 0.2, -0.4, -6.1, 0.2, 0.200001, -6.4, 0.2, -0.4, -7, 0.2, -0.699999, -8.8, 0.2, -0.4, -8.8, 0.2, 0.200001, -7, 0.2, 0.500002, -6.1, 0.2, 0.200001, -7, 0.2, -0.699999, -7, 0.2, -1.9, -8.5, 0.2, -1.9, -8.8, 0.2, -0.4, -8.8, 0.2, -0.4, -9.7, 0.2, -1, -24.7, 0.2, -1, -24.7, 0.2, 1.1, -9.4, 0.2, 0.800001, -8.8, 0.2, 0.200001, -8.5, 0.2, 2, -7, 0.2, 2, -7, 0.2, 0.500002, -8.8, 0.2, 0.200001, -6.1, 0.2, 2, -4, 0.2, 2, -4, 0.2, 0.500002, -6.1, 0.2, 0.200001, -4.3, 0.2, -0.699999, -4, 0.2, -1.9, -6.1, 0.2, -1.9, -6.4, 0.2, -0.4, -3.1, 0.2, -1, -3.7, 0.2, -0.4, -3.4, 0.2, 0.200001, -3.1, 0.2, -1, -3.4, 0.2, 0.200001, -3.1, 0.2, 0.800001, 24.8, 0.2, 1.1, 24.8, 0.2, -1, -9.4, 0.2, 2.6, -9.4, 0.2, 0.800001, -24.7, 0.2, 1.1, -7.3, 0.2, 2.9, -9.4, 0.2, 2.6, -24.7, 0.2, 1.1, -24.7, 0.2, 24.8, -7.6, 0.2, 24.8, -3.4, 0.2, 2.9, -5.2, 0.2, 2.9, -4.9, 0.2, 24.8, -3.1, 0.2, 0.800001, -3.4, 0.2, 2.9, -4.9, 0.2, 24.8, 24.8, 0.2, 24.8, 24.8, 0.2, 1.1, -7.6, 0.2, 24.8, -4.9, 0.2, 24.8, -5.2, 0.2, 2.9, -7.3, 0.2, 2.9)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(7, 6, 5), PackedInt32Array(8, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(14, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(18, 15, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(23, 20, 25), PackedInt32Array(23, 25, 24), PackedInt32Array(26, 31, 27), PackedInt32Array(27, 31, 30), PackedInt32Array(27, 30, 29), PackedInt32Array(27, 29, 28), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(41, 40, 36), PackedInt32Array(36, 40, 37), PackedInt32Array(37, 40, 38), PackedInt32Array(38, 40, 39), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(56, 55, 54), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 61), PackedInt32Array(59, 61, 60), PackedInt32Array(64, 63, 62), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 69), PackedInt32Array(67, 69, 68), PackedInt32Array(72, 71, 70), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 77), PackedInt32Array(75, 77, 76), PackedInt32Array(81, 80, 78), PackedInt32Array(78, 80, 79)]
+geometry_parsed_geometry_type = 1
+cell_size = 0.3
+cell_height = 0.1
+agent_radius = 0.2
+agent_max_climb = 0.1
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_rbomw"]
+map_width = 51
+map_depth = 51
+map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_honji"]
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnpt8"]
+albedo_color = Color(0.364706, 0.623529, 0.305882, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_l3270"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.00979328, 0, 0.0146905, 0, 0, 0, 0, 0, 0, 2.42879, 0, 0.592508, 0, 0, 0, 0, 0, 0, 4.74986, 0, -0.719824, 0, 0, 0, 0, 0, 0, 7.26679, 0, 0.0244836, 0, 0, 0, 0, 0, 0, 4.83035, 0, 0.186421, 0, 0, 0, 0, 0, 0, 1.72953, 0, -0.328076),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="Playground" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColoredDithering" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+material = ExtResource("1_2aag8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1316.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_4eiex")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2xvka")
+pitch_scale = 0.5
+autoplay = true
+
+[node name="Nav" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_5trqg")
+
+[node name="Ground" type="StaticBody3D" parent="Nav"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground"]
+shape = SubResource("HeightMapShape3D_rbomw")
+
+[node name="Visuals" type="MeshInstance3D" parent="Nav/Ground"]
+mesh = SubResource("PlaneMesh_honji")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_hnpt8")
+
+[node name="GraveDemo" type="Node3D" parent="Nav"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Graves" type="Node3D" parent="Nav/GraveDemo"]
+
+[node name="Grave" parent="Nav/GraveDemo/Graves" instance=ExtResource("6_liunr")]
+transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -4.3, 0, -1.50006)
+
+[node name="Grave2" parent="Nav/GraveDemo/Graves" instance=ExtResource("6_liunr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.4, 0, -1.5)
+
+[node name="Grave3" parent="Nav/GraveDemo/Graves" instance=ExtResource("6_liunr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 0, 1)
+
+[node name="Grave4" parent="Nav/GraveDemo/Graves" instance=ExtResource("6_liunr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 0, 1.9)
+
+[node name="Walls" type="Node3D" parent="Nav/GraveDemo"]
+
+[node name="BrickWall" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.9, 0, 2)
+
+[node name="BrickWall2" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -0.9, 0, -2)
+
+[node name="BrickWall3" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.9, 0, 2)
+
+[node name="BrickWall4" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.9, 0, -2)
+
+[node name="BrickWall9" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -2.9, 0, -2)
+
+[node name="BrickWall13" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -2.9, 0, 2)
+
+[node name="BrickWall5" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.9, 0, 2)
+
+[node name="BrickWall6" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -2.9, 0, -2)
+
+[node name="BrickWall7" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.9, 0, 2)
+
+[node name="BrickWall8" parent="Nav/GraveDemo/Walls" instance=ExtResource("7_k2376")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -3.9, 0, -2)
+
+[node name="BrickWallCurveSmall" parent="Nav/GraveDemo/Walls" instance=ExtResource("8_m2xq1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2)
+
+[node name="BrickWallCurveSmall2" parent="Nav/GraveDemo/Walls" instance=ExtResource("8_m2xq1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0, -2)
+
+[node name="BrickWallEnd" parent="Nav/GraveDemo/Walls" instance=ExtResource("9_xtl42")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1)
+
+[node name="BrickWallEnd5" parent="Nav/GraveDemo/Walls" instance=ExtResource("9_xtl42")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.1, 0, -1.2)
+
+[node name="BrickWallEnd6" parent="Nav/GraveDemo/Walls" instance=ExtResource("9_xtl42")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2.9, 0, 1.1)
+
+[node name="BrickWallEnd2" parent="Nav/GraveDemo/Walls" instance=ExtResource("9_xtl42")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.8, 0, -1.4967)
+
+[node name="BrickWallCurveSmall3" parent="Nav/GraveDemo/Walls" instance=ExtResource("8_m2xq1")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.6, 0, -2)
+
+[node name="BrickWallCurveSmall4" parent="Nav/GraveDemo/Walls" instance=ExtResource("8_m2xq1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.6, 0, 2)
+
+[node name="BrickWallEnd3" parent="Nav/GraveDemo/Walls" instance=ExtResource("9_xtl42")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.6, 0, -1.2)
+
+[node name="BrickWallEnd4" parent="Nav/GraveDemo/Walls" instance=ExtResource("9_xtl42")]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -5.4, 0, 1.3)
+
+[node name="Root Scene" parent="Nav/GraveDemo" instance=ExtResource("10_x11my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -1.8)
+
+[node name="Root Scene2" parent="Nav/GraveDemo" instance=ExtResource("10_x11my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34229, 0, 1.69865)
+
+[node name="Player" parent="." instance=ExtResource("4_s7rld")]
+unique_name_in_owner = true
+transform = Transform3D(-0.332737, 0, 0.94302, 0, 1, 0, -0.94302, 0, -0.332737, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.719364, 0.429777, 0.545717, -1.49012e-08, -0.785619, 0.61871, 0.694633, -0.445078, -0.565146, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.71
+
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_iisj2")]
+unique_name_in_owner = true
+target = NodePath("../Player")
+offset = Vector3(-0.5, 0, -0.5)
+
+[node name="Warden" parent="." node_paths=PackedStringArray("_path") instance=ExtResource("11_10000")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+_path = NodePath("../Path3D")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+top_level = true
+curve = SubResource("Curve3D_l3270")

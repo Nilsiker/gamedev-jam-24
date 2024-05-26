@@ -19,7 +19,7 @@ func torso(torso_anim):
 
 func rotate_body(direction):
 	if direction:
-		var target = global_transform.looking_at(global_position + direction, Vector3.UP, not dragging())
+		var target = global_transform.looking_at(global_position + direction, Vector3.UP, true)
 		get_parent().global_transform = get_parent().global_transform.interpolate_with(target, 0.5)
 	# 	if dragging():
 	# 		anim.play_backwards("walk", 0.25)
@@ -30,9 +30,6 @@ func rotate_body(direction):
 
 	# if dragging():
 	# 		anim.play("holding-both", 0.25)
-
-func dragging():
-	return $"../Visuals/Carry".get_children().size() > 0
 
 func hold(holding):
 	if holding:

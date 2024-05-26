@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://cb5p62jsx3cek"]
+
+[ext_resource type="Script" path="res://scripts/Warden.gd" id="1_x0jcr"]
+[ext_resource type="PackedScene" uid="uid://dq7bfej61bicp" path="res://scenes/digger.tscn" id="2_6t27u"]
+[ext_resource type="Script" path="res://scripts/components/Sight.gd" id="2_8ftou"]
+[ext_resource type="Script" path="res://scripts/CharacterAnimator.gd" id="2_e15pi"]
+[ext_resource type="Texture2D" uid="uid://ci8kphgo20wp1" path="res://assets/external/kenney_particle-pack/PNG (Transparent)/smoke_07.png" id="3_p6oj4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s55pl"]
+radius = 0.2
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eisp"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_p6oj4")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_llcek"]
+material = SubResource("StandardMaterial3D_7eisp")
+size = Vector2(1, 1)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_pfv1c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_waltu"]
+offsets = PackedFloat32Array(0, 0.493333)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tkopy"]
+size = Vector3(0.650635, 1, 0.8)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qtmkk"]
+radius = 3.0
+
+[node name="Warden" type="CharacterBody3D" node_paths=PackedStringArray("_path_timer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+collision_layer = 0
+script = ExtResource("1_x0jcr")
+_path_timer = NodePath("PathTimer")
+
+[node name="CharacterAnimator" type="Node3D" parent="."]
+script = ExtResource("2_e15pi")
+
+[node name="Sight" type="Node3D" parent="." node_paths=PackedStringArray("_area", "_ray")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+script = ExtResource("2_8ftou")
+_area = NodePath("../AttentionArea")
+_ray = NodePath("LineOfSight")
+_angle = 75.0
+
+[node name="LineOfSight" type="RayCast3D" parent="Sight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.6, 0)
+top_level = true
+collision_mask = 3
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="DisabledTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Visuals" parent="." instance=ExtResource("2_6t27u")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_s55pl")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 0.25
+path_max_distance = 100.01
+debug_enabled = true
+
+[node name="Dust" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487089, 0.192294)
+emitting = false
+amount = 4
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.8
+mesh = SubResource("PlaneMesh_llcek")
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_pfv1c")
+color_ramp = SubResource("Gradient_waltu")
+
+[node name="DamageArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.4)
+shape = SubResource("BoxShape3D_tkopy")
+
+[node name="AttentionArea" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="Collider" type="CollisionShape3D" parent="AttentionArea"]
+shape = SubResource("SphereShape3D_qtmkk")
