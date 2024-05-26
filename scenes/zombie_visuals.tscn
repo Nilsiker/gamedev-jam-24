@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3y4l46ltiylq"]
+
+[ext_resource type="PackedScene" uid="uid://c41nbakge3v1g" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/character-zombie.fbx" id="1_ekhdx"]
+
+[node name="ZombieVisuals" instance=ExtResource("1_ekhdx")]
+
+[node name="root" parent="RootNode/character_zombie" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.32907e-16, 0)
+
+[node name="torso" parent="RootNode/character_zombie/root" index="0"]
+transform = Transform3D(1, 0, -2.62049e-06, 0, 1, 0, 2.62049e-06, 0, 1, -1.44382e-15, 0.223184, -7.21911e-16)
+
+[node name="arm_left" parent="RootNode/character_zombie/root/torso" index="0"]
+transform = Transform3D(0.707107, 0.707107, -9.35843e-09, -0.707107, 0.707107, 3.33067e-15, 6.61741e-09, 6.61741e-09, 1, 0.15, 0.2, 0.0025)
+
+[node name="arm_right" parent="RootNode/character_zombie/root/torso" index="1"]
+transform = Transform3D(0.707107, -0.707107, -9.35843e-09, 0.707107, 0.707107, -3.33067e-15, 6.61741e-09, -6.61741e-09, 1, -0.15, 0.2, 0.0025)
+
+[node name="head" parent="RootNode/character_zombie/root/torso" index="2"]
+transform = Transform3D(1, 0, -2.123e-09, 0, 1, 0, 2.123e-09, 0, 1, -1.44382e-15, 0.26, 0)

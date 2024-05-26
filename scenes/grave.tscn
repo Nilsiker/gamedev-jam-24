@@ -1,0 +1,110 @@
+[gd_scene load_steps=18 format=3 uid="uid://di6uh68bstbkv"]
+
+[ext_resource type="PackedScene" uid="uid://muxgtjn8ntdw" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/grave.fbx" id="1_5uas8"]
+[ext_resource type="PackedScene" uid="uid://cb2ds6e27vx6c" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/gravestone-cross-large.fbx" id="1_mq2k7"]
+[ext_resource type="Script" path="res://scripts/Grave.gd" id="1_snomy"]
+[ext_resource type="PackedScene" uid="uid://kb2px3g6okx" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/gravestone-cross.fbx" id="2_6dkva"]
+[ext_resource type="PackedScene" uid="uid://c32wdwapjyiqb" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/gravestone-round.fbx" id="2_nhefx"]
+[ext_resource type="PackedScene" uid="uid://clmv3a03c872" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/gravestone-debris.fbx" id="3_rbbyt"]
+[ext_resource type="PackedScene" uid="uid://dopl3vcbpies" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/gravestone-decorative.fbx" id="4_jt5u7"]
+[ext_resource type="PackedScene" uid="uid://3wh0mn8dw651" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/gravestone-broken.fbx" id="5_4fcmr"]
+[ext_resource type="PackedScene" uid="uid://cs4nkrjg0cuap" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/gravestone-roof.fbx" id="6_pqxeh"]
+[ext_resource type="PackedScene" uid="uid://flrjdaq1qpmq" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/gravestone-wide.fbx" id="7_bvo1s"]
+[ext_resource type="PackedScene" uid="uid://bnvln2exsmumm" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/grave-border.fbx" id="8_uuu6a"]
+[ext_resource type="Texture2D" uid="uid://ci8kphgo20wp1" path="res://assets/external/kenney_particle-pack/PNG (Transparent)/smoke_07.png" id="12_keuba"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vcj0"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_keuba")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kah7k"]
+material = SubResource("StandardMaterial3D_4vcj0")
+size = Vector2(1, 1)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_q6drk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rgylb"]
+offsets = PackedFloat32Array(0, 0.493333)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7vh3i"]
+size = Vector3(0.0439453, 1, 1)
+
+[node name="Grave" type="Node3D"]
+script = ExtResource("1_snomy")
+style = "Decorative"
+
+[node name="Gravestone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0381629, 0, 0.66727)
+
+[node name="Whole" type="Node3D" parent="Gravestone"]
+
+[node name="CrossLarge" parent="Gravestone/Whole" instance=ExtResource("1_mq2k7")]
+visible = false
+
+[node name="Cross" parent="Gravestone/Whole" instance=ExtResource("2_6dkva")]
+visible = false
+
+[node name="Round" parent="Gravestone/Whole" instance=ExtResource("2_nhefx")]
+visible = false
+
+[node name="Decorative" parent="Gravestone/Whole" instance=ExtResource("4_jt5u7")]
+
+[node name="Roof" parent="Gravestone/Whole" instance=ExtResource("6_pqxeh")]
+visible = false
+
+[node name="Wide" parent="Gravestone/Whole" instance=ExtResource("7_bvo1s")]
+visible = false
+
+[node name="Destroyed" type="Node3D" parent="Gravestone"]
+visible = false
+
+[node name="Broken" parent="Gravestone/Destroyed" instance=ExtResource("5_4fcmr")]
+
+[node name="Debris" parent="Gravestone/Destroyed" instance=ExtResource("3_rbbyt")]
+
+[node name="Mound" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453016, -0.0104421, 0.612983)
+
+[node name="Closed" parent="Mound" instance=ExtResource("1_5uas8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0450608, 0.0105505, -0.667957)
+
+[node name="Open" parent="Mound" instance=ExtResource("1_5uas8")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0.0310278, 0.0218822, -0.66727)
+
+[node name="Root Scene" parent="Mound" instance=ExtResource("8_uuu6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+
+[node name="Dust" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160884, 0.00646067)
+emitting = false
+amount = 40
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.8
+mesh = SubResource("PlaneMesh_kah7k")
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.4, 0.2)
+spread = 180.0
+gravity = Vector3(0, 10, 0)
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_q6drk")
+color = Color(0.649997, 0.394348, 0.309521, 1)
+color_ramp = SubResource("Gradient_rgylb")
+
+[node name="DropArea" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DropArea"]
+shape = SubResource("BoxShape3D_7vh3i")

@@ -1,0 +1,205 @@
+[gd_scene load_steps=18 format=3 uid="uid://by6li4dmfrper"]
+
+[ext_resource type="PackedScene" uid="uid://drfou3v2m7mj7" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/lightpost-single.fbx" id="1_roo5l"]
+[ext_resource type="PackedScene" uid="uid://yfpn3tb646uu" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/brick-wall.fbx" id="2_vo8if"]
+[ext_resource type="PackedScene" uid="uid://dgju7wualn4jo" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/brick-wall-curve.fbx" id="3_xq58q"]
+[ext_resource type="PackedScene" uid="uid://dycvtnv12mtyo" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/brick-wall-end.fbx" id="4_f0h5c"]
+[ext_resource type="PackedScene" uid="uid://bjqpg6t6vukc2" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/bench.fbx" id="5_ii8tl"]
+[ext_resource type="PackedScene" uid="uid://cfwxvqcy7qj6n" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/iron-fence-border-gate.fbx" id="6_rrufa"]
+[ext_resource type="PackedScene" uid="uid://uih6jsqm16j4" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pine.fbx" id="7_y1aah"]
+[ext_resource type="PackedScene" uid="uid://dlajadqg1wcrl" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pine-fall-crooked.fbx" id="8_t5d0n"]
+[ext_resource type="PackedScene" uid="uid://b6c1p5m5j1qg2" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pine-crooked.fbx" id="9_7criq"]
+[ext_resource type="PackedScene" uid="uid://c0qa38ep0h7ja" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/crypt-large.fbx" id="10_b4aql"]
+[ext_resource type="PackedScene" uid="uid://ccbaeyu3h73hk" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/crypt-large-roof.fbx" id="11_2iem7"]
+[ext_resource type="PackedScene" uid="uid://blnx6kpwcu7dk" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/crypt-door.fbx" id="12_ox7xs"]
+[ext_resource type="PackedScene" uid="uid://b3sjfnksi6fk1" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/crypt-small-entrance-alternative.fbx" id="13_weutt"]
+[ext_resource type="PackedScene" uid="uid://cqkpayoj13e3e" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/crypt.fbx" id="14_sgso0"]
+[ext_resource type="Script" path="res://scripts/Note.gd" id="15_l40xb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_icax4"]
+size = Vector2(0.2, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hqxd6"]
+size = Vector3(1, 1.52338, 1)
+
+[node name="Graveyard" type="Node3D"]
+
+[node name="LampPost" parent="." instance=ExtResource("1_roo5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -0.8)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="LampPost"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000233173, 1.0894, 0.239918)
+light_color = Color(0.930048, 0.853574, 0.619412, 1)
+light_energy = 0.7
+light_size = 1.0
+shadow_transmittance_bias = -12.879
+shadow_blur = 2.414
+omni_range = 1.933
+omni_attenuation = 0.420448
+
+[node name="Walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
+
+[node name="Root Scene" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Root Scene2" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="Root Scene4" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 0)
+
+[node name="Root Scene5" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 1)
+
+[node name="Root Scene3" parent="Walls" instance=ExtResource("3_xq58q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -1)
+
+[node name="Root Scene6" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 1)
+
+[node name="Root Scene7" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 0)
+
+[node name="Root Scene8" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="Root Scene9" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="Root Scene29" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
+
+[node name="Root Scene30" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+
+[node name="Root Scene10" parent="Walls" instance=ExtResource("3_xq58q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
+
+[node name="Root Scene11" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1, 0, 8)
+
+[node name="Root Scene12" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0, 8)
+
+[node name="Root Scene14" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 2)
+
+[node name="Root Scene15" parent="Walls" instance=ExtResource("3_xq58q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.8, 0, 8)
+
+[node name="Root Scene31" parent="Walls" instance=ExtResource("3_xq58q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8, 0, 3.82309)
+
+[node name="Root Scene16" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 2)
+
+[node name="Root Scene17" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 3)
+
+[node name="Root Scene21" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 4)
+
+[node name="Root Scene22" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 5)
+
+[node name="Root Scene23" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 6)
+
+[node name="Root Scene24" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 7)
+
+[node name="Root Scene18" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 0, 8)
+
+[node name="Root Scene19" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.96046e-08, 0, 8)
+
+[node name="Root Scene25" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, 8)
+
+[node name="Root Scene32" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.79906, 0, 7.10839)
+
+[node name="Root Scene33" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.8, 0, 4.80759)
+
+[node name="Root Scene26" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.82549, 0, 8)
+
+[node name="Root Scene27" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3, 0, 8)
+
+[node name="Root Scene28" parent="Walls" instance=ExtResource("2_vo8if")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 0, 8)
+
+[node name="Root Scene20" parent="Walls" instance=ExtResource("3_xq58q")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, 8)
+
+[node name="Root Scene13" parent="Walls" instance=ExtResource("3_xq58q")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.81808, 0, 3.00121)
+
+[node name="Root Scene34" parent="Walls" instance=ExtResource("4_f0h5c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.79536, 0, 6.91893)
+
+[node name="Root Scene35" parent="Walls" instance=ExtResource("4_f0h5c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.61848, 0, 4.90052)
+
+[node name="Root Scene37" parent="Walls" instance=ExtResource("5_ii8tl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.37035, 0, 5.23799)
+
+[node name="Root Scene38" parent="Walls" instance=ExtResource("6_rrufa")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.71597, 0, 5.93775)
+
+[node name="Trees" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -5)
+
+[node name="Root Scene" parent="Trees" instance=ExtResource("7_y1aah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.421166, 0, 1.40204)
+
+[node name="Root Scene2" parent="Trees" instance=ExtResource("8_t5d0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02517, 0, -0.669451)
+
+[node name="Root Scene3" parent="Trees" instance=ExtResource("9_7criq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.9)
+
+[node name="Crypt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="Root Scene4" parent="Crypt" instance=ExtResource("10_b4aql")]
+
+[node name="Root Scene6" parent="Crypt" instance=ExtResource("11_2iem7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Root Scene9" parent="Crypt" instance=ExtResource("12_ox7xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.9)
+
+[node name="Root Scene10" parent="Crypt" instance=ExtResource("13_weutt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9)
+
+[node name="CryptSmall" parent="." instance=ExtResource("14_sgso0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.45718, 0, -3.75829)
+
+[node name="Note" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.989861, 0.142042, 0, -0.142042, 0.989861, -0.664051, 0.512812, 0.294182)
+script = ExtResource("15_l40xb")
+text = "Dear warden,
+
+I had to get out early.
+Make sure you handle \"the last stand\".
+
+Yours kindly,
+The Director"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Note"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0445819, 0, 0)
+light_energy = 0.5
+omni_range = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Note"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_icax4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Note"]
+transform = Transform3D(0.39079, 0, 0, 0, 0.390792, -2.98023e-08, 0, 2.98023e-08, 0.390792, 0, 0.00324565, 2.38419e-07)
+shape = SubResource("BoxShape3D_hqxd6")
