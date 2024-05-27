@@ -2165,19 +2165,19 @@ node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body"
 script = ExtResource("2_xafdn")
 
 [node name="root" parent="RootNode/character_digger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0052, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026568, 0)
 
 [node name="leg_left" parent="RootNode/character_digger/root" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.911289, -0.41177, 0, 0.41177, 0.911289, 0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.624839, -0.780754, 0, 0.780754, 0.624839, 0.074204, 0.223184, -7.21911e-16)
 
 [node name="leg_right" parent="RootNode/character_digger/root" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.911287, 0.411772, 0, -0.411772, 0.911287, -0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.624839, 0.780753, 0, -0.780753, 0.624839, -0.074204, 0.223184, -7.21911e-16)
 
 [node name="torso" parent="RootNode/character_digger/root" index="2"]
-transform = Transform3D(0.999206, 0, 0.0398533, 0, 1, 0, -0.0398533, 0, 0.999206, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(0.985721, 0, 0.168388, 0, 1, 0, -0.168388, 0, 0.985721, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="arm_left" parent="RootNode/character_digger/root/torso" index="0"]
-transform = Transform3D(0.72661, 0.676611, -0.119308, -0.681381, 0.731928, 0.00111979, 0.0880829, 0.0804807, 0.992857, 0.15, 0.2, 0.0025)
+transform = Transform3D(0.763062, 0.425985, -0.486081, -0.485689, 0.874124, 0.00360865, 0.426433, 0.23333, 0.873907, 0.15, 0.2, 0.0025)
 
 [node name="Root Scene" parent="RootNode/character_digger/root/torso/arm_left" index="0" instance=ExtResource("2_lho4s")]
 transform = Transform3D(0.818564, -0.536276, -0.205819, 0.545539, 0.837973, -0.0137295, 0.179833, -0.101044, 0.978494, 0.381701, -0.242275, 0.0623347)
@@ -2189,7 +2189,7 @@ shadow_opacity = 0.43
 shadow_blur = 4.939
 
 [node name="arm_right" parent="RootNode/character_digger/root/torso" index="1"]
-transform = Transform3D(0.726609, -0.676611, -0.119308, 0.68138, 0.731927, -0.00111979, 0.0880828, -0.0804806, 0.992855, -0.15, 0.2, 0.0025)
+transform = Transform3D(0.76306, -0.425985, -0.48608, 0.485689, 0.874123, -0.00360882, 0.426432, -0.23333, 0.873905, -0.15, 0.2, 0.0025)
 
 [node name="RightHandSocket" type="Node3D" parent="RootNode/character_digger/root/torso/arm_right" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.984223, -0.17693, 0, 0.17693, 0.984223, -0.219272, 0.00334847, 0.0994912)
@@ -2198,7 +2198,7 @@ transform = Transform3D(1, 0, 0, 0, 0.984223, -0.17693, 0, 0.17693, 0.984223, -0
 transform = Transform3D(1, 3.35276e-08, 2.98023e-08, -1.49012e-08, 0.984224, 0.17693, 0, -0.17693, 0.984224, 0, 0, 0)
 
 [node name="head" parent="RootNode/character_digger/root/torso" index="2"]
-transform = Transform3D(0.999646, 0, -0.0265728, 0, 1, 0, 0.0265728, 0, 0.999646, -1.44382e-15, 0.26, 3.60956e-16)
+transform = Transform3D(0.993645, 0, -0.112557, 0, 1, 0, 0.112557, 0, 0.993645, -1.44382e-15, 0.26, 3.60956e-16)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
