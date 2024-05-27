@@ -2137,28 +2137,28 @@ node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body"
 transform = Transform3D(0.88, 0, 0, 0, 1, 0, 0, 0, 0.9, 0, 0, 0)
 
 [node name="root" parent="RootNode/character_zombie" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0448, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0237109, 0)
 
 [node name="torso" parent="RootNode/character_zombie/root" index="0"]
-transform = Transform3D(0.872022, 0, -0.2474, 0, 1, 0, 0.22266, 0, 0.968913, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(0.893073, 0, -0.123831, 0, 1, 0, 0.111448, 0, 0.992303, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="arm_left" parent="RootNode/character_zombie/root/torso" index="0"]
-transform = Transform3D(0.701992, 0.206362, 0.681632, -0.281545, 0.959548, -0.000546046, -0.654171, -0.191527, 0.731695, 0.15, 0.2, 0.0025)
+transform = Transform3D(0.799466, 0.477961, 0.363877, -0.511666, 0.859173, -0.00437418, -0.314724, -0.182686, 0.931437, 0.15, 0.2, 0.0025)
 
 [node name="arm_right" parent="RootNode/character_zombie/root/torso" index="1"]
-transform = Transform3D(0.701992, -0.206362, 0.681632, 0.281545, 0.959548, 0.000546046, -0.654171, 0.191527, 0.731695, -0.15, 0.2, 0.0025)
+transform = Transform3D(0.799466, -0.477961, 0.363877, 0.511666, 0.859173, 0.00437418, -0.314724, 0.182686, 0.931437, -0.15, 0.2, 0.0025)
 
 [node name="RightHandSocket" type="Node3D" parent="RootNode/character_zombie/root/torso/arm_right" index="0"]
 transform = Transform3D(0.963368, -2.98058e-08, 0.26818, 4.72751e-08, 1, 2.18463e-08, -0.26818, 0, 0.963368, -0.228327, 0.0156391, 0.0162019)
 
 [node name="head" parent="RootNode/character_zombie/root/torso" index="2"]
-transform = Transform3D(0.867806, 0, 0.145986, 0, 0.88, 0, -0.145986, 0, 0.867806, -1.44382e-15, 0.26, 2.64698e-22)
+transform = Transform3D(0.876987, 0, 0.0727515, 0, 0.88, 0, -0.0727515, 0, 0.876987, -1.44382e-15, 0.26, 2.64698e-22)
 
 [node name="leg_right" parent="RootNode/character_zombie/root" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.536523, -0.843886, 0, 0.843886, 0.536523, -0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.782434, -0.622734, 0, 0.622734, 0.782434, -0.074204, 0.223184, -7.21911e-16)
 
 [node name="leg_left" parent="RootNode/character_zombie/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.536523, 0.843886, 0, -0.843886, 0.536523, 0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.782434, 0.622734, 0, -0.622734, 0.782434, 0.074204, 0.223184, -7.21911e-16)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {

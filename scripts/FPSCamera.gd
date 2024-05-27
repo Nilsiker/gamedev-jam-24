@@ -13,3 +13,4 @@ func _ready():
 
 func _process(delta):
 	fov = move_toward(fov, target_fov, 100.0 * delta)
+	

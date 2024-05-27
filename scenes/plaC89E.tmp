@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8b8pxevb30sr"]
+[gd_scene load_steps=22 format=3 uid="uid://b8b8pxevb30sr"]
 
 [ext_resource type="Material" uid="uid://dcgqd4r7xk7k2" path="res://addons/colored_dithering/resources/material_colored_dithering.tres" id="1_2aag8"]
 [ext_resource type="Script" path="res://scripts/ColorPulse.gd" id="1_o7osu"]
@@ -22,16 +22,9 @@ shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 1.0
 shader_parameter/color = Color(0.123994, 0.0828633, 0.0488503, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnwje"]
-shader = ExtResource("4_s58c0")
-shader_parameter/alpha = 1.0
-shader_parameter/inner_radius = 0.0
-shader_parameter/outer_radius = 2.0
-shader_parameter/color = Color(1, 0, 0, 1)
-
 [sub_resource type="Curve" id="Curve_6l7p4"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49635, 0.252131), 1.64476, 1.64476, 0, 0, Vector2(0.682482, 0.870739), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.599572, 0.270249), 1.64476, 1.64476, 0, 0, Vector2(0.75803, 0.880112), 0.0, 0.0, 0, 0, Vector2(0.875803, 0.0825983), -2.29514, -2.29514, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_5trqg"]
 vertices = PackedVector3Array(-24.7, 0.2, -1, -9.7, 0.2, -1, -9.1, 0.2, -2.8, -7.6, 0.2, -24.7, -24.7, 0.2, -24.7, -9.1, 0.2, -2.8, -7.3, 0.2, -2.8, -7.6, 0.2, -24.7, -7.3, 0.2, -2.8, -5.2, 0.2, -2.8, -4.9, 0.2, -24.7, -7.6, 0.2, -24.7, -4.9, 0.2, -24.7, -5.2, 0.2, -2.8, -3.4, 0.2, -2.8, -4.9, 0.2, -24.7, -3.4, 0.2, -2.8, -3.1, 0.2, -1, 24.8, 0.2, -1, 24.8, 0.2, -24.7, -4, 0.2, 0.500002, -3.4, 0.2, 0.200001, -3.7, 0.2, -0.4, -4.3, 0.2, -0.699999, -6.4, 0.2, -0.4, -6.1, 0.2, 0.200001, -6.4, 0.2, -0.4, -7, 0.2, -0.699999, -8.8, 0.2, -0.4, -8.8, 0.2, 0.200001, -7, 0.2, 0.500002, -6.1, 0.2, 0.200001, -7, 0.2, -0.699999, -7, 0.2, -1.9, -8.5, 0.2, -1.9, -8.8, 0.2, -0.4, -8.8, 0.2, -0.4, -9.7, 0.2, -1, -24.7, 0.2, -1, -24.7, 0.2, 1.1, -9.4, 0.2, 0.800001, -8.8, 0.2, 0.200001, -8.5, 0.2, 2, -7, 0.2, 2, -7, 0.2, 0.500002, -8.8, 0.2, 0.200001, -6.1, 0.2, 2, -4, 0.2, 2, -4, 0.2, 0.500002, -6.1, 0.2, 0.200001, -4.3, 0.2, -0.699999, -4, 0.2, -1.9, -6.1, 0.2, -1.9, -6.4, 0.2, -0.4, -3.1, 0.2, -1, -3.7, 0.2, -0.4, -3.4, 0.2, 0.200001, -3.1, 0.2, -1, -3.4, 0.2, 0.200001, -3.1, 0.2, 0.800001, 24.8, 0.2, 1.1, 24.8, 0.2, -1, -9.4, 0.2, 2.6, -9.4, 0.2, 0.800001, -24.7, 0.2, 1.1, -7.3, 0.2, 2.9, -9.4, 0.2, 2.6, -24.7, 0.2, 1.1, -24.7, 0.2, 24.8, -7.6, 0.2, 24.8, -3.4, 0.2, 2.9, -5.2, 0.2, 2.9, -4.9, 0.2, 24.8, -3.1, 0.2, 0.800001, -3.4, 0.2, 2.9, -4.9, 0.2, 24.8, 24.8, 0.2, 24.8, 24.8, 0.2, 1.1, -7.6, 0.2, 24.8, -4.9, 0.2, 24.8, -5.2, 0.2, 2.9, -7.3, 0.2, 2.9)
@@ -60,19 +53,11 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="Environment" id="Environment_w75s1"]
-background_mode = 1
-background_color = Color(0, 0, 0.180392, 1)
-fog_enabled = true
-fog_light_color = Color(0, 0, 0, 1)
-fog_density = 1.0
-
 [node name="Playground" type="Node3D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Vignette" type="ColorRect" parent="CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_t3ffj")
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,15 +69,15 @@ script = ExtResource("2_exql8")
 
 [node name="ColorPulse" type="ColorRect" parent="CanvasLayer"]
 visible = false
-material = SubResource("ShaderMaterial_rnwje")
+modulate = Color(1, 1, 1, 0.249826)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.670588, 0, 0, 0.643137)
+color = Color(0.57, 0, 0, 1)
 script = ExtResource("1_o7osu")
-_amplitude = 0.8
+_amplitude = 0.25
 _speed = null
 _curve = SubResource("Curve_6l7p4")
 
@@ -102,8 +87,6 @@ material = ExtResource("1_2aag8")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -106.0
-offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -235,6 +218,3 @@ _path = NodePath("../Path3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 top_level = true
 curve = SubResource("Curve3D_l3270")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_w75s1")

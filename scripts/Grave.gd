@@ -1,20 +1,21 @@
-@tool
 class_name Grave
 extends Node3D
-
-@export var open: bool = false
-@export_enum("CrossLarge","Cross","Round","Decorative", "Roof", "Wide") var style: String:
-	get: return _style
-	set(value):
-		_style = value
-		var whole = $"Gravestone/Whole"
-		if whole:
-			for child in whole.get_children():
-				child.visible = child.name == style
-		
-
-var _style: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+
+var hider = null
+
+func interact(interactor):
+	hider = interactor
+	PlayerChannel.hide(PlayerChannel.Hide.Grave)
+	hider.global_position = $HidePosition.global_position
+	hider.global_rotation = $HidePosition.global_rotation
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept") and hider:
+		hider.global_position = $LeavePosition.global_position
+		hider.global_rotation = $LeavePosition.global_rotation
+		hider = null
+		PlayerChannel.hide(PlayerChannel.Hide.No)

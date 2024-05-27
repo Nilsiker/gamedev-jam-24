@@ -76,7 +76,6 @@ shape = SubResource("CapsuleShape3D_s55pl")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 0.25
 path_max_distance = 100.01
-debug_enabled = true
 
 [node name="Dust" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487089, 0.192294)

@@ -14,7 +14,6 @@ const JUMP_VELOCITY = 4.5
 var target: Node3D:
 	get: return $Sight.target
 var _path_point = 0
-var _path_target: Vector3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -22,7 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	_path_timer.timeout.connect(_on_path_timer_timeout)
 
-func _process(delta):
+func _process(_delta):
 	if target:
 		_path_timer.start(5.0)
 		_nav.target_position = target.global_position
@@ -53,7 +52,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func damage(amount: int):
+func damage(_amount: int):
 	_anim.play("die")
 	$Dust.restart()
 	disabled.start(2)

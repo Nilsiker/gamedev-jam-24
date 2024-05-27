@@ -18,7 +18,6 @@ func _process(_delta):
 
 
 	var closest_in_angle = _get_closest_target_in_angle()
-	print(closest_in_angle if closest_in_angle else "nothing")
 	if not closest_in_angle: 
 		target = null
 		return

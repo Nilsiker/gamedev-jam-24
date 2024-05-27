@@ -14,7 +14,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	global_position = global_position.move_toward(target.global_position + offset, 0.2)
 
 func _unhandled_input(event):

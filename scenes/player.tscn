@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcqk16go8p0tc"]
+[gd_scene load_steps=11 format=3 uid="uid://bcqk16go8p0tc"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_twwl2"]
 [ext_resource type="Script" path="res://scripts/CharacterAnimator.gd" id="2_313dn"]
 [ext_resource type="PackedScene" uid="uid://c3y4l46ltiylq" path="res://scenes/zombie_visuals.tscn" id="2_khc0j"]
 [ext_resource type="Script" path="res://scripts/FPSCamera.gd" id="2_wy8ja"]
+[ext_resource type="Script" path="res://scripts/components/Shaker.gd" id="3_gq3nm"]
+[ext_resource type="Script" path="res://scripts/components/Bobber.gd" id="4_avnuc"]
+[ext_resource type="AudioStream" uid="uid://5fqlmmsg8164" path="res://assets/external/ovanisound/Bat Impact 004.wav" id="6_nkmv8"]
+[ext_resource type="Script" path="res://scripts/Clonk.gd" id="7_sv85r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y2tei"]
 radius = 0.196956
@@ -12,18 +16,48 @@ height = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_jd83m"]
 size = Vector3(0.483398, 1, 0.605957)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_tgayf"]
-
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
 script = ExtResource("1_twwl2")
 _speed = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.218536)
+transform = Transform3D(0.999522, 0, 0.030902, 0, 1, 0, -0.030902, 0, 0.999522, 0.00896573, 0.548341, -0.158286)
 script = ExtResource("2_wy8ja")
 
+[node name="Shaker" type="Node" parent="Camera3D"]
+script = ExtResource("3_gq3nm")
+
+[node name="Bobber" type="Node" parent="Camera3D"]
+script = ExtResource("4_avnuc")
+
+[node name="InteractRay" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(0.999522, 0, -0.030902, 0, 1, 0, 0.030902, 0, 0.999522, 0, 0, 0)
+target_position = Vector3(0, 0, -1)
+collide_with_areas = true
+
 [node name="Visuals" parent="." instance=ExtResource("2_khc0j")]
+
+[node name="root" parent="Visuals/RootNode/character_zombie" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019752, 0)
+
+[node name="torso" parent="Visuals/RootNode/character_zombie/root" index="0"]
+transform = Transform3D(0.891283, 0, -0.138843, 0, 1, 0, 0.124959, 0, 0.990314, -1.44382e-15, 0.223184, -7.21911e-16)
+
+[node name="arm_left" parent="Visuals/RootNode/character_zombie/root/torso" index="0"]
+transform = Transform3D(0.764782, 0.500441, 0.405792, -0.546851, 0.837228, -0.00187719, -0.34068, -0.220472, 0.913964, 0.15, 0.2, 0.0025)
+
+[node name="arm_right" parent="Visuals/RootNode/character_zombie/root/torso" index="1"]
+transform = Transform3D(0.764782, -0.500441, 0.405792, 0.546851, 0.837228, 0.00187719, -0.34068, 0.220472, 0.913964, -0.15, 0.2, 0.0025)
+
+[node name="head" parent="Visuals/RootNode/character_zombie/root/torso" index="2"]
+transform = Transform3D(0.876208, 0, 0.0816012, 0, 0.88, 0, -0.0816012, 0, 0.876208, -1.44382e-15, 0.26, 2.64698e-22)
+
+[node name="leg_right" parent="Visuals/RootNode/character_zombie/root" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.96018, -0.27938, 0, 0.27938, 0.96018, -0.074204, 0.223184, -7.21911e-16)
+
+[node name="leg_left" parent="Visuals/RootNode/character_zombie/root" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.96018, 0.279382, 0, -0.279382, 0.96018, 0.074204, 0.223184, -7.21911e-16)
 
 [node name="Animator" type="Node3D" parent="."]
 script = ExtResource("2_313dn")
@@ -38,8 +72,9 @@ shape = SubResource("CapsuleShape3D_y2tei")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00256264, 0.5, 0.319629)
 shape = SubResource("BoxShape3D_jd83m")
 
-[node name="InteractArea" type="Area3D" parent="."]
+[node name="Clonk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nkmv8")
+max_polyphony = 6
+script = ExtResource("7_sv85r")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294453, 0)
-shape = SubResource("SphereShape3D_tgayf")
+[editable path="Visuals"]
