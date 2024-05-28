@@ -40,19 +40,19 @@ collide_with_areas = true
 [node name="Visuals" parent="." instance=ExtResource("2_khc0j")]
 
 [node name="root" parent="Visuals/RootNode/character_zombie" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000221084, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00411491, 0)
 
 [node name="torso" parent="Visuals/RootNode/character_zombie/root" index="0"]
-transform = Transform3D(0.899999, 0, 0.00115508, 0, 1, 0, -0.00103957, 0, 0.999999, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(0.899791, 0, 0.0215433, 0, 1, 0, -0.019389, 0, 0.999768, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="arm_left" parent="Visuals/RootNode/character_zombie/root/torso" index="0"]
-transform = Transform3D(0.708737, 0.705464, -0.00347203, -0.705468, 0.708742, 9.05328e-05, 0.00252464, 0.00238524, 0.999994, 0.15, 0.2, 0.0025)
+transform = Transform3D(0.735358, 0.674593, -0.0645937, -0.675987, 0.736913, 0.000367241, 0.0478477, 0.0433945, 0.997912, 0.15, 0.2, 0.0025)
 
 [node name="arm_right" parent="Visuals/RootNode/character_zombie/root/torso" index="1"]
-transform = Transform3D(0.708737, -0.705464, -0.00347203, 0.705468, 0.708742, -9.05328e-05, 0.00252464, -0.00238524, 0.999994, -0.15, 0.2, 0.0025)
+transform = Transform3D(0.735358, -0.674593, -0.0645937, 0.675987, 0.736913, -0.000367241, 0.0478477, -0.0433945, 0.997912, -0.15, 0.2, 0.0025)
 
 [node name="head" parent="Visuals/RootNode/character_zombie/root/torso" index="2"]
-transform = Transform3D(0.879999, 0, -0.000679125, 0, 0.88, 0, 0.000679125, 0, 0.879999, -1.44382e-15, 0.26, 2.64698e-22)
+transform = Transform3D(0.879909, 0, -0.0126397, 0, 0.88, 0, 0.0126397, 0, 0.879909, -1.44382e-15, 0.26, 2.64698e-22)
 
 [node name="Pumpkin" parent="Visuals/RootNode/character_zombie/root/torso/head" index="0" instance=ExtResource("6_c62y1")]
 transform = Transform3D(1.66272, 0, -0.37155, 0, 1.67592, 0, 0.201443, 0, 1.64421, 1.23933e-16, 0.0703709, -7.40281e-16)
