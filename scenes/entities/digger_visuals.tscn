@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dq7bfej61bicp"]
+[gd_scene load_steps=44 format=3 uid="uid://dq7bfej61bicp"]
 
 [ext_resource type="PackedScene" uid="uid://clhhtoqetsjrt" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/character-digger.fbx" id="1_55q2x"]
 [ext_resource type="PackedScene" uid="uid://b17skcrpg1dg" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/lantern-glass.fbx" id="2_lho4s"]
@@ -426,7 +426,7 @@ tracks/10/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_wbwhd"]
 resource_name = "die"
-length = 0.333333
+length = 3.0
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -2107,6 +2107,8 @@ input_2/name = "sprint"
 input_2/auto_advance = false
 input_2/reset = true
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_46c58"]
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_vkrya"]
 filter_enabled = true
 filters = ["RootNode/character_digger/root/torso", "RootNode/character_digger/root/torso/arm_left", "RootNode/character_digger/root/torso/arm_right", "RootNode/character_digger/root/torso/head"]
@@ -2121,6 +2123,9 @@ input_1/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s2ncg"]
 animation = &"attack-melee-right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54iuh"]
+animation = &"die"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sq5sm"]
 animation = &"pick-up"
@@ -2138,46 +2143,51 @@ animation = &"sprint"
 animation = &"walk"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5gcr2"]
+graph_offset = Vector2(-231.942, 49.7603)
 nodes/Action/node = SubResource("AnimationNodeOneShot_07uou")
 nodes/Action/position = Vector2(300, 120)
 nodes/Body/node = SubResource("AnimationNodeTransition_3yxm8")
 nodes/Body/position = Vector2(80, -20)
+nodes/Die/node = SubResource("AnimationNodeOneShot_46c58")
+nodes/Die/position = Vector2(780, 180)
 nodes/Hold/node = SubResource("AnimationNodeBlend2_vkrya")
 nodes/Hold/position = Vector2(520, 200)
 nodes/TorsoAction/node = SubResource("AnimationNodeTransition_awr7u")
 nodes/TorsoAction/position = Vector2(60, 260)
 nodes/attack/node = SubResource("AnimationNodeAnimation_s2ncg")
 nodes/attack/position = Vector2(-220, 280)
+nodes/die/node = SubResource("AnimationNodeAnimation_54iuh")
+nodes/die/position = Vector2(620, 420)
 nodes/grab/node = SubResource("AnimationNodeAnimation_sq5sm")
 nodes/grab/position = Vector2(-220, 440)
 nodes/holding-both/node = SubResource("AnimationNodeAnimation_2sltp")
 nodes/holding-both/position = Vector2(300, 380)
 nodes/idle/node = SubResource("AnimationNodeAnimation_pdxgg")
 nodes/idle/position = Vector2(-80, -120)
-nodes/output/position = Vector2(700, 200)
+nodes/output/position = Vector2(940, 180)
 nodes/sprint/node = SubResource("AnimationNodeAnimation_ki3du")
 nodes/sprint/position = Vector2(-80, 120)
 nodes/walk/node = SubResource("AnimationNodeAnimation_nvrbp")
 nodes/walk/position = Vector2(-80, 0)
-node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body", 0, &"idle", &"Body", 1, &"walk", &"Body", 2, &"sprint", &"Hold", 0, &"Action", &"Hold", 1, &"holding-both", &"TorsoAction", 0, &"attack", &"TorsoAction", 1, &"grab", &"output", 0, &"Hold"]
+node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body", 0, &"idle", &"Body", 1, &"walk", &"Body", 2, &"sprint", &"Die", 0, &"Hold", &"Die", 1, &"die", &"Hold", 0, &"Action", &"Hold", 1, &"holding-both", &"TorsoAction", 0, &"attack", &"TorsoAction", 1, &"grab", &"output", 0, &"Die"]
 
 [node name="Visual" instance=ExtResource("1_55q2x")]
 script = ExtResource("2_xafdn")
 
 [node name="root" parent="RootNode/character_digger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026568, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.021802, 0)
 
 [node name="leg_left" parent="RootNode/character_digger/root" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.624839, -0.780754, 0, 0.780754, 0.624839, 0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.810494, 0.585747, 0, -0.585747, 0.810494, 0.074204, 0.223184, -7.21911e-16)
 
 [node name="leg_right" parent="RootNode/character_digger/root" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.624839, 0.780753, 0, -0.780753, 0.624839, -0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.810494, -0.585747, 0, 0.585747, 0.810494, -0.074204, 0.223184, -7.21911e-16)
 
 [node name="torso" parent="RootNode/character_digger/root" index="2"]
-transform = Transform3D(0.985721, 0, 0.168388, 0, 1, 0, -0.168388, 0, 0.985721, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(0.993492, 0, -0.113907, 0, 1, 0, 0.113907, 0, 0.993492, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="arm_left" parent="RootNode/character_digger/root/torso" index="0"]
-transform = Transform3D(0.763062, 0.425985, -0.486081, -0.485689, 0.874124, 0.00360865, 0.426433, 0.23333, 0.873907, 0.15, 0.2, 0.0025)
+transform = Transform3D(0.798839, 0.499117, 0.335768, -0.528767, 0.848759, -0.00366765, -0.286817, -0.174613, 0.941938, 0.15, 0.2, 0.0025)
 
 [node name="Root Scene" parent="RootNode/character_digger/root/torso/arm_left" index="0" instance=ExtResource("2_lho4s")]
 transform = Transform3D(0.818564, -0.536276, -0.205819, 0.545539, 0.837973, -0.0137295, 0.179833, -0.101044, 0.978494, 0.381701, -0.242275, 0.0623347)
@@ -2189,7 +2199,7 @@ shadow_opacity = 0.43
 shadow_blur = 4.939
 
 [node name="arm_right" parent="RootNode/character_digger/root/torso" index="1"]
-transform = Transform3D(0.76306, -0.425985, -0.48608, 0.485689, 0.874123, -0.00360882, 0.426432, -0.23333, 0.873905, -0.15, 0.2, 0.0025)
+transform = Transform3D(0.798837, -0.499116, 0.335768, 0.528766, 0.848758, 0.00366765, -0.286817, 0.174613, 0.941936, -0.15, 0.2, 0.0025)
 
 [node name="RightHandSocket" type="Node3D" parent="RootNode/character_digger/root/torso/arm_right" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.984223, -0.17693, 0, 0.17693, 0.984223, -0.219272, 0.00334847, 0.0994912)
@@ -2198,7 +2208,7 @@ transform = Transform3D(1, 0, 0, 0, 0.984223, -0.17693, 0, 0.17693, 0.984223, -0
 transform = Transform3D(1, 3.35276e-08, 2.98023e-08, -1.49012e-08, 0.984224, 0.17693, 0, -0.17693, 0.984224, 0, 0, 0)
 
 [node name="head" parent="RootNode/character_digger/root/torso" index="2"]
-transform = Transform3D(0.993645, 0, -0.112557, 0, 1, 0, 0.112557, 0, 0.993645, -1.44382e-15, 0.26, 3.60956e-16)
+transform = Transform3D(0.997105, 0, 0.0760297, 0, 1, 0, -0.0760297, 0, 0.997105, -1.44382e-15, 0.26, 3.60956e-16)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -2214,6 +2224,9 @@ parameters/Action/request = 0
 parameters/Body/current_state = "walk"
 parameters/Body/transition_request = ""
 parameters/Body/current_index = 1
+parameters/Die/active = false
+parameters/Die/internal_active = false
+parameters/Die/request = 0
 parameters/Hold/blend_amount = 0.0
 parameters/TorsoAction/current_state = ""
 parameters/TorsoAction/transition_request = ""

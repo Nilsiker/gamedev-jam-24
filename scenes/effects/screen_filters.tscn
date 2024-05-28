@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://cta6oncm8bakv"]
+
+[ext_resource type="Shader" path="res://vignette.gdshader" id="1_pqddq"]
+[ext_resource type="Script" path="res://scripts/Vignette.gd" id="2_cxypk"]
+[ext_resource type="Script" path="res://scripts/ColorPulse.gd" id="3_1d4bh"]
+[ext_resource type="Material" uid="uid://dcgqd4r7xk7k2" path="res://addons/colored_dithering/resources/material_colored_dithering.tres" id="4_44tpt"]
+[ext_resource type="Script" path="res://addons/colored_dithering/scripts/colored_dithering.gd" id="5_slyyg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t3ffj"]
+shader = ExtResource("1_pqddq")
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
+shader_parameter/color = Color(0.123994, 0.0828633, 0.0488503, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnwje"]
+shader = ExtResource("1_pqddq")
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 2.0
+shader_parameter/color = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_6l7p4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49635, 0.252131), 1.64476, 1.64476, 0, 0, Vector2(0.682482, 0.870739), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="ScreenFilters" type="CanvasLayer"]
+
+[node name="Vignette" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_t3ffj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_cxypk")
+
+[node name="ColorPulse" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_rnwje")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.670588, 0, 0, 0.643137)
+script = ExtResource("3_1d4bh")
+_amplitude = 0.8
+_curve = SubResource("Curve_6l7p4")
+
+[node name="ColoredDithering" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = ExtResource("4_44tpt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 453.0
+offset_bottom = 543.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("5_slyyg")

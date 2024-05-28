@@ -1,0 +1,141 @@
+[gd_scene load_steps=5 format=3 uid="uid://5pt3ckoblrsk"]
+
+[ext_resource type="Theme" uid="uid://smavd03xpxa1" path="res://resources/theme_label_default.tres" id="1_lbuqr"]
+[ext_resource type="Texture2D" uid="uid://b0ymbicsda8bf" path="res://icon.svg" id="2_5k3h5"]
+[ext_resource type="Material" uid="uid://dcgqd4r7xk7k2" path="res://addons/colored_dithering/resources/material_colored_dithering.tres" id="3_2803h"]
+[ext_resource type="Texture2D" uid="uid://b5xijkitgxw4l" path="res://nilsikersq.png" id="3_mghpw"]
+
+[node name="Credits" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_lbuqr")
+theme_override_colors/font_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_constants/line_spacing = 16
+theme_override_font_sizes/font_size = 32
+text = "CREDITS
+
+"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="."]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_lbuqr")
+theme_override_colors/font_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_constants/line_spacing = 16
+theme_override_font_sizes/font_size = 16
+text = "Created for the GameDev.TV Jam 2024 using Godot
+
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_5k3h5")
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+material = ExtResource("3_2803h")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -72.0
+offset_right = 73.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content2" type="Label" parent="."]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_lbuqr")
+theme_override_colors/font_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_constants/line_spacing = 16
+theme_override_font_sizes/font_size = 16
+text = "
+
+GAME DESIGN
+Andreas Nilsson
+
+
+PROGRAMMING
+Andreas Nilsson
+
+
+ASSETS USED
+Graveyard Kit (KenneyNL)
+Impact Sounds (KenneyNL)
+Interface Sounds (KenneyNL)
+Press Start 2P (CodeMan38)
+
+
+SOCIALS
+nilsiker.itch.io
+x.com/nilsiker
+github.com/nilsiker
+
+SPECIAL THANKS
+My partner, Sara"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LastSection" type="Label" parent="."]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_lbuqr")
+theme_override_colors/font_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_constants/line_spacing = 16
+theme_override_font_sizes/font_size = 16
+text = "
+
+THANKS FOR PLAYING!
+
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Profile" type="TextureRect" parent="LastSection"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+offset_left = 236.0
+offset_top = 132.0
+offset_right = 364.0
+offset_bottom = 260.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_mghpw")
+expand_mode = 1
+
+[node name="ColorRect2" type="ColorRect" parent="LastSection/Profile"]
+material = ExtResource("3_2803h")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2

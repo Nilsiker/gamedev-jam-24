@@ -1,11 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6keo7s10gg6"]
+[gd_scene load_steps=26 format=3 uid="uid://c6keo7s10gg6"]
 
+[ext_resource type="Theme" uid="uid://smavd03xpxa1" path="res://resources/theme_label_default.tres" id="1_boai5"]
 [ext_resource type="PackedScene" uid="uid://di6uh68bstbkv" path="res://scenes/grave.tscn" id="1_edoxm"]
+[ext_resource type="PackedScene" uid="uid://cta6oncm8bakv" path="res://scenes/effects/screen_filters.tscn" id="1_se158"]
 [ext_resource type="PackedScene" uid="uid://bl2rhixbeqfcc" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/shovel.fbx" id="2_fi1u3"]
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="2_t0gee"]
+[ext_resource type="PackedScene" uid="uid://clbm1rre2pk7y" path="res://scenes/statics/iron_fence_border.tscn" id="4_cig1n"]
+[ext_resource type="PackedScene" uid="uid://escvwf8eed81" path="res://scenes/statics/iron_fence_border_curve.tscn" id="5_a7y2v"]
+[ext_resource type="PackedScene" uid="uid://dnylc7nrqrfq5" path="res://scenes/statics/brick_wall_curve_small.tscn" id="6_2ygmd"]
+[ext_resource type="PackedScene" uid="uid://rom1v3tjv7ik" path="res://assets/external/kenney_graveyard-kit/Models/GLB format/bench-damaged.glb" id="7_hfu8p"]
+[ext_resource type="PackedScene" uid="uid://bhn4oyph3v5g8" path="res://scenes/statics/brick_wall.tscn" id="7_xwx5o"]
+[ext_resource type="PackedScene" uid="uid://cs5yf8yaybeh3" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pine-fall.fbx" id="9_x5hrq"]
+[ext_resource type="PackedScene" uid="uid://uih6jsqm16j4" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pine.fbx" id="10_ka42a"]
+[ext_resource type="PackedScene" uid="uid://drfou3v2m7mj7" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/lightpost-single.fbx" id="11_wjtvh"]
+[ext_resource type="PackedScene" uid="uid://c1ubck0imwbot" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/debris.fbx" id="12_p0n0b"]
+[ext_resource type="PackedScene" uid="uid://bwucyk5vg0awt" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/debris-wood.fbx" id="13_hwv6t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2ou4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i6ejr"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2edya"]
-vertices = PackedVector3Array(-24.7, 0.2, -24.7, -24.7, 0.2, 24.8, 24.8, 0.2, 24.8, 24.8, 0.2, -24.7)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 geometry_parsed_geometry_type = 1
 cell_size = 0.3
 cell_height = 0.1
@@ -26,7 +46,88 @@ albedo_color = Color(0.364706, 0.623529, 0.305882, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_axc8j"]
 size = Vector3(0.2, 0.658887, 0.0571289)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vna7i"]
+sky_top_color = Color(0.0777777, 0.101905, 0.135457, 1)
+sky_horizon_color = Color(0.0138608, 0, 0.458688, 1)
+
+[sub_resource type="Sky" id="Sky_ccsin"]
+sky_material = SubResource("ProceduralSkyMaterial_vna7i")
+
+[sub_resource type="Environment" id="Environment_bhh0g"]
+background_mode = 2
+sky = SubResource("Sky_ccsin")
+ambient_light_sky_contribution = 0.25
+fog_enabled = true
+fog_light_color = Color(0.774583, 0.616585, 0.82697, 1)
+
 [node name="Game" type="Node3D"]
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="ScreenFilters" parent="Menu" instance=ExtResource("1_se158")]
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MainMenu" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+script = ExtResource("2_t0gee")
+
+[node name="Title" type="Label" parent="Menu/MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_boai5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+text = "ONE FINAL SHAMBLE"
+
+[node name="HSeparator" type="HSeparator" parent="Menu/MarginContainer/MainMenu"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_i2ou4")
+
+[node name="Play" type="Button" parent="Menu/MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_boai5")
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i6ejr")
+text = "  Play"
+
+[node name="Credits" type="Button" parent="Menu/MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_boai5")
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i6ejr")
+text = "  Credits"
+
+[node name="Quit" type="Button" parent="Menu/MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_boai5")
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i6ejr")
+text = "  Quit"
 
 [node name="Level" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_2edya")
@@ -41,18 +142,98 @@ mesh = SubResource("PlaneMesh_hifur")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3dmnn")
 
-[node name="Walls" type="Node3D" parent="Level"]
+[node name="Zone1" type="Node3D" parent="Level"]
 
-[node name="Graves" type="Node3D" parent="Level"]
+[node name="Trees" type="Node3D" parent="Level/Zone1"]
 
-[node name="Grave" parent="Level/Graves" instance=ExtResource("1_edoxm")]
+[node name="Root Scene" parent="Level/Zone1/Trees" instance=ExtResource("9_x5hrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26466, 0, 0.842324)
 
-[node name="Shovel" type="Area3D" parent="Level/Graves/Grave"]
+[node name="Root Scene2" parent="Level/Zone1/Trees" instance=ExtResource("10_ka42a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71574, 0, -0.564979)
+
+[node name="Root Scene3" parent="Level/Zone1/Trees" instance=ExtResource("9_x5hrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72619, 0, -1.89905)
+
+[node name="Root Scene4" parent="Level/Zone1/Trees" instance=ExtResource("10_ka42a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85379, 0, 0.845991)
+
+[node name="Root Scene5" parent="Level/Zone1/Trees" instance=ExtResource("10_ka42a")]
+transform = Transform3D(0.940725, 0, 0, 0, 0.940725, 0, 0, 0, 0.940725, 1.7155, -2.38419e-07, 2.38251)
+
+[node name="Root Scene8" parent="Level/Zone1/Trees" instance=ExtResource("10_ka42a")]
+transform = Transform3D(1.20809, 0, 0, 0, 1.20809, 0, 0, 0, 1.20809, 0.744596, -2.38419e-07, 4.98797)
+
+[node name="Root Scene6" parent="Level/Zone1/Trees" instance=ExtResource("9_x5hrq")]
+transform = Transform3D(1.04387, 0, 0, 0, 1.04387, 0, 0, 0, 1.04387, 0.598532, 0, 3.19324)
+
+[node name="Root Scene9" parent="Level/Zone1/Trees" instance=ExtResource("9_x5hrq")]
+transform = Transform3D(1.49613, 0, 0, 0, 1.49613, 0, 0, 0, 1.49613, 2.50526, 0, 4.34026)
+
+[node name="Root Scene7" parent="Level/Zone1/Trees" instance=ExtResource("10_ka42a")]
+transform = Transform3D(1.00776, 0, 0, 0, 1.00776, 0, 0, 0, 1.00776, -0.523092, 0, 2.34294)
+
+[node name="Walls" type="Node3D" parent="Level/Zone1"]
+
+[node name="IronFenceBorder" parent="Level/Zone1/Walls" instance=ExtResource("4_cig1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="IronFenceBorderCurve" parent="Level/Zone1/Walls" instance=ExtResource("5_a7y2v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -1)
+
+[node name="IronFenceBorder2" parent="Level/Zone1/Walls" instance=ExtResource("4_cig1n")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0)
+
+[node name="BrickWallCurveSmall" parent="Level/Zone1/Walls" instance=ExtResource("6_2ygmd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 1)
+
+[node name="BrickWallCurveSmall2" parent="Level/Zone1/Walls" instance=ExtResource("6_2ygmd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 0, 1)
+
+[node name="bench-damaged2" parent="Level/Zone1/Walls/BrickWallCurveSmall2" instance=ExtResource("7_hfu8p")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -1.31654, -0.00352323, 2.17275)
+
+[node name="BrickWall" parent="Level/Zone1/Walls" instance=ExtResource("7_xwx5o")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1)
+
+[node name="Graves" type="Node3D" parent="Level/Zone1"]
+
+[node name="Grave" parent="Level/Zone1/Graves" instance=ExtResource("1_edoxm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.205504)
+
+[node name="Shovel" type="Area3D" parent="Level/Zone1"]
 transform = Transform3D(0.925983, -0.377566, 0, 0.377566, 0.925983, 0, 0, 0, 1, 0.00315833, 0, -0.404067)
 
-[node name="Root Scene" parent="Level/Graves/Grave/Shovel" instance=ExtResource("2_fi1u3")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.4, 0)
+[node name="Root Scene" parent="Level/Zone1/Shovel" instance=ExtResource("2_fi1u3")]
+transform = Transform3D(0.707107, 0, -0.707107, -0.707107, -4.37114e-08, -0.707107, -3.09086e-08, 1, -3.09086e-08, 0.370393, 0.248974, 0.205504)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Graves/Grave/Shovel"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Zone1/Shovel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58794e-09, 0.329443, 0.0158691)
 shape = SubResource("BoxShape3D_axc8j")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.511262, -0.0412336, -0.858435, 0, 0.998848, -0.0479781, 0.859425, -0.0245294, -0.510674, -1.0663, 0.597011, -0.830314)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bhh0g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.637055, -0.231646, 0.735187, -0.0478186, 0.940062, 0.337635, -0.769333, -0.250248, 0.587794, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Lightpost" parent="." instance=ExtResource("11_wjtvh")]
+transform = Transform3D(-0.973207, 0, 0.229931, 0, 1, 0, -0.229931, 0, -0.973207, -0.477287, 0, 0.968893)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightpost"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00107217, 1.05764, 0.243417)
+light_color = Color(1, 1, 0.854902, 1)
+light_energy = 0.5
+light_size = 0.45
+omni_range = 1.75
+
+[node name="Root Scene" parent="." instance=ExtResource("12_p0n0b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.850591, 0, 0.571103)
+
+[node name="Root Scene2" parent="." instance=ExtResource("13_hwv6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.690535, 0, 0.677445)

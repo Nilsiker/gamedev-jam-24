@@ -44,7 +44,6 @@ func _get_in_angle(a):
 	var to = (global_position - a.global_position).normalized()
 	var forward = -global_transform.basis.z
 	var angle = forward.angle_to(to)
-	print(rad_to_deg(angle))
 	return rad_to_deg(angle) < _angle
 	
 func _sort_by_distance(a, b):

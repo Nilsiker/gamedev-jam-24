@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtj71dm34tk6c"]
+
+[ext_resource type="Texture2D" uid="uid://ci8kphgo20wp1" path="res://assets/external/kenney_particle-pack/PNG (Transparent)/smoke_07.png" id="1_ufene"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eisp"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ufene")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_llcek"]
+material = SubResource("StandardMaterial3D_7eisp")
+size = Vector2(1, 1)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_pfv1c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_waltu"]
+offsets = PackedFloat32Array(0, 0.493333)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Dust" type="CPUParticles3D"]
+emitting = false
+amount = 4
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.8
+mesh = SubResource("PlaneMesh_llcek")
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_pfv1c")
+color_ramp = SubResource("Gradient_waltu")

@@ -7,12 +7,15 @@ extends CharacterBody3D
 @onready var right_hand_socket: Node3D = $Visuals/RootNode/character_zombie/root/torso/arm_right/RightHandSocket
 @onready var anim: CharacterAnimator = $Animator;
 @onready var _cam: FPSCamera = $Camera3D
+@onready var _shovel: Node3D = $Camera3D/Shovel
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 func _ready():
 	PlayerChannel.hid.connect(_on_player_hid)
+	PlayerChannel.picked_shovel.connect(_on_player_picked_shovel)
 
 
 func _physics_process(delta):
@@ -42,6 +45,7 @@ func _physics_process(delta):
 	_cam.target_fov = _cam.SPRINT_FOV if sprint else _cam.NORMAL_FOV
 	move_and_slide()
 
+
 func _unhandled_input(event):
 	if event.is_action_pressed("lock_cursor"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_VISIBLE
@@ -52,11 +56,13 @@ func _unhandled_input(event):
 		var target_rot = clampf(_cam.global_rotation.x - pitch *_rotation_speed, deg_to_rad(-75), deg_to_rad(75))
 		_cam.global_rotation.x = target_rot
 		global_rotation.y -= yaw * _rotation_speed
-
+		
 	elif event.is_action_pressed("interact"):
 		handle_interact()
 	elif event.is_action_pressed("attack"):
 		anim.torso("attack")
+		PlayerChannel.swing()
+
 
 func _on_player_hid(mode):
 	match mode:
@@ -65,7 +71,6 @@ func _on_player_hid(mode):
 			EffectsChannel.clear()
 			_speed = 2.0
 			$Visuals/RootNode/character_zombie/root/torso/head/Pumpkin.visible = false
-
 		PlayerChannel.Hide.Pumpkin:
 			collision_layer = 0 
 			EffectsChannel.pumpkin()
@@ -74,9 +79,11 @@ func _on_player_hid(mode):
 			EffectsChannel.grave()
 			_speed = 0
 	print(collision_layer)
-	
 
-		
+
+func _on_player_picked_shovel():
+	_shovel.visible = true
+
 
 func handle_interact():
 	if $Camera3D/InteractRay.get_collider():

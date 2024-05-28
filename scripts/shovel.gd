@@ -4,6 +4,7 @@ extends Node3D
 func _ready():
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	global_transform = $"..".right_hand_socket.global_transform
+
+func interact(interactor):
+	PlayerChannel.pick_shovel()
+	queue_free()

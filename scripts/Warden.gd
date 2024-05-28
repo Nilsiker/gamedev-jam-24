@@ -53,9 +53,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func damage(_amount: int):
-	_anim.play("die")
+	_anim.die()
 	$Dust.restart()
-	disabled.start(2)
+	disabled.start(3)
 
 func interact(_interactor): # todo ugly marker function
 	pass

@@ -9,13 +9,17 @@ var animation: String:
 
 var move_direction: Vector3
 
+func die():
+	tree.set("parameters/Die/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func body(body_anim):
 	tree.set("parameters/Body/transition_request", body_anim)
 
+
 func torso(torso_anim):
 	tree.set("parameters/TorsoAction/transition_request", torso_anim)
 	tree["parameters/Action/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
 
 func rotate_body(direction):
 	if direction:
@@ -30,6 +34,7 @@ func rotate_body(direction):
 
 	# if dragging():
 	# 		anim.play("holding-both", 0.25)
+
 
 func hold(holding):
 	if holding:
