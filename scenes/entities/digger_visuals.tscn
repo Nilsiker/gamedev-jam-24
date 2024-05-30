@@ -2093,14 +2093,12 @@ _data = {
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_07uou"]
 filter_enabled = true
 filters = [".", "RootNode/character_digger/root", "RootNode/character_digger/root/torso", "RootNode/character_digger/root/torso/arm_left", "RootNode/character_digger/root/torso/arm_right", "RootNode/character_digger/root/torso/head"]
-sync = true
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_3yxm8"]
-xfade_time = 0.25
-input_0/name = "idle"
+input_0/name = "walk"
 input_0/auto_advance = false
 input_0/reset = true
-input_1/name = "walk"
+input_1/name = "idle"
 input_1/auto_advance = false
 input_1/reset = true
 input_2/name = "sprint"
@@ -2140,54 +2138,51 @@ animation = &"idle"
 animation = &"sprint"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nvrbp"]
-animation = &"walk"
+animation = &"idle"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5gcr2"]
-graph_offset = Vector2(-231.942, 49.7603)
+graph_offset = Vector2(-430.267, -46.826)
 nodes/Action/node = SubResource("AnimationNodeOneShot_07uou")
-nodes/Action/position = Vector2(300, 120)
+nodes/Action/position = Vector2(280, 200)
 nodes/Body/node = SubResource("AnimationNodeTransition_3yxm8")
 nodes/Body/position = Vector2(80, -20)
 nodes/Die/node = SubResource("AnimationNodeOneShot_46c58")
-nodes/Die/position = Vector2(780, 180)
+nodes/Die/position = Vector2(740, 140)
 nodes/Hold/node = SubResource("AnimationNodeBlend2_vkrya")
-nodes/Hold/position = Vector2(520, 200)
+nodes/Hold/position = Vector2(520, 160)
 nodes/TorsoAction/node = SubResource("AnimationNodeTransition_awr7u")
 nodes/TorsoAction/position = Vector2(60, 260)
 nodes/attack/node = SubResource("AnimationNodeAnimation_s2ncg")
-nodes/attack/position = Vector2(-220, 280)
+nodes/attack/position = Vector2(-180, 320)
 nodes/die/node = SubResource("AnimationNodeAnimation_54iuh")
-nodes/die/position = Vector2(620, 420)
+nodes/die/position = Vector2(560, 400)
 nodes/grab/node = SubResource("AnimationNodeAnimation_sq5sm")
-nodes/grab/position = Vector2(-220, 440)
+nodes/grab/position = Vector2(-120, 460)
 nodes/holding-both/node = SubResource("AnimationNodeAnimation_2sltp")
-nodes/holding-both/position = Vector2(300, 380)
+nodes/holding-both/position = Vector2(300, 480)
 nodes/idle/node = SubResource("AnimationNodeAnimation_pdxgg")
-nodes/idle/position = Vector2(-80, -120)
-nodes/output/position = Vector2(940, 180)
+nodes/idle/position = Vector2(-200, -100)
+nodes/output/position = Vector2(960, 140)
 nodes/sprint/node = SubResource("AnimationNodeAnimation_ki3du")
-nodes/sprint/position = Vector2(-80, 120)
+nodes/sprint/position = Vector2(-200, 160)
 nodes/walk/node = SubResource("AnimationNodeAnimation_nvrbp")
-nodes/walk/position = Vector2(-80, 0)
+nodes/walk/position = Vector2(-200, 20)
 node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body", 0, &"idle", &"Body", 1, &"walk", &"Body", 2, &"sprint", &"Die", 0, &"Hold", &"Die", 1, &"die", &"Hold", 0, &"Action", &"Hold", 1, &"holding-both", &"TorsoAction", 0, &"attack", &"TorsoAction", 1, &"grab", &"output", 0, &"Die"]
 
 [node name="Visual" instance=ExtResource("1_55q2x")]
 script = ExtResource("2_xafdn")
 
-[node name="root" parent="RootNode/character_digger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.021802, 0)
-
 [node name="leg_left" parent="RootNode/character_digger/root" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.810494, 0.585747, 0, -0.585747, 0.810494, 0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074204, 0.223184, -7.21911e-16)
 
 [node name="leg_right" parent="RootNode/character_digger/root" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.810494, -0.585747, 0, 0.585747, 0.810494, -0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074204, 0.223184, -7.21911e-16)
 
 [node name="torso" parent="RootNode/character_digger/root" index="2"]
-transform = Transform3D(0.993492, 0, -0.113907, 0, 1, 0, 0.113907, 0, 0.993492, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.999915, -0.0130426, 0, 0.0130426, 0.999916, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="arm_left" parent="RootNode/character_digger/root/torso" index="0"]
-transform = Transform3D(0.798839, 0.499117, 0.335768, -0.528767, 0.848759, -0.00366765, -0.286817, -0.174613, 0.941938, 0.15, 0.2, 0.0025)
+transform = Transform3D(0.734227, 0.678904, 4.977e-19, -0.678905, 0.734226, -2.07213e-19, -5.06103e-19, -1.85749e-19, 1, 0.15, 0.2, 0.0025)
 
 [node name="Root Scene" parent="RootNode/character_digger/root/torso/arm_left" index="0" instance=ExtResource("2_lho4s")]
 transform = Transform3D(0.818564, -0.536276, -0.205819, 0.545539, 0.837973, -0.0137295, 0.179833, -0.101044, 0.978494, 0.381701, -0.242275, 0.0623347)
@@ -2199,7 +2194,7 @@ shadow_opacity = 0.43
 shadow_blur = 4.939
 
 [node name="arm_right" parent="RootNode/character_digger/root/torso" index="1"]
-transform = Transform3D(0.798837, -0.499116, 0.335768, 0.528766, 0.848758, 0.00366765, -0.286817, 0.174613, 0.941936, -0.15, 0.2, 0.0025)
+transform = Transform3D(0.734226, -0.678903, -2.41738e-20, 0.678904, 0.734225, -7.28359e-19, 5.12235e-19, 5.18368e-19, 0.999999, -0.15, 0.2, 0.0025)
 
 [node name="RightHandSocket" type="Node3D" parent="RootNode/character_digger/root/torso/arm_right" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.984223, -0.17693, 0, 0.17693, 0.984223, -0.219272, 0.00334847, 0.0994912)
@@ -2208,14 +2203,16 @@ transform = Transform3D(1, 0, 0, 0, 0.984223, -0.17693, 0, 0.17693, 0.984223, -0
 transform = Transform3D(1, 3.35276e-08, 2.98023e-08, -1.49012e-08, 0.984224, 0.17693, 0, -0.17693, 0.984224, 0, 0, 0)
 
 [node name="head" parent="RootNode/character_digger/root/torso" index="2"]
-transform = Transform3D(0.997105, 0, 0.0760297, 0, 1, 0, -0.0760297, 0, 0.997105, -1.44382e-15, 0.26, 3.60956e-16)
+transform = Transform3D(0.999914, 0, -0.0130425, 0, 1, 0, 0.0130425, 0, 0.999914, -1.44382e-15, 0.26, 3.60956e-16)
 
 [node name="AnimationPlayer" parent="." index="1"]
+deterministic = true
 libraries = {
 "": SubResource("AnimationLibrary_1oi0u")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+deterministic = false
 tree_root = SubResource("AnimationNodeBlendTree_5gcr2")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Action/active = false
@@ -2223,7 +2220,7 @@ parameters/Action/internal_active = false
 parameters/Action/request = 0
 parameters/Body/current_state = "walk"
 parameters/Body/transition_request = ""
-parameters/Body/current_index = 1
+parameters/Body/current_index = 0
 parameters/Die/active = false
 parameters/Die/internal_active = false
 parameters/Die/request = 0

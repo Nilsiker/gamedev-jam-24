@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdcae20oi7dgo"]
+
+[ext_resource type="Script" path="res://scripts/Shovel.gd" id="1_wefr8"]
+[ext_resource type="PackedScene" uid="uid://bl2rhixbeqfcc" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/shovel.fbx" id="2_ih7tc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybgdh"]
+size = Vector3(0.2, 0.658887, 0.0571289)
+
+[node name="Shovel" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00684482, 0.0194353, -1.02951)
+script = ExtResource("1_wefr8")
+
+[node name="Root Scene" parent="." instance=ExtResource("2_ih7tc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.1)
+shape = SubResource("BoxShape3D_ybgdh")

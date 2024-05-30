@@ -20,20 +20,11 @@ func torso(torso_anim):
 	tree.set("parameters/TorsoAction/transition_request", torso_anim)
 	tree["parameters/Action/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-
+ 
 func rotate_body(direction):
 	if direction:
 		var target = global_transform.looking_at(global_position + direction, Vector3.UP, true)
 		get_parent().global_transform = get_parent().global_transform.interpolate_with(target, 0.5)
-	# 	if dragging():
-	# 		anim.play_backwards("walk", 0.25)
-	# 	else:
-	# 		anim.play("walk", 0.25)
-	# else:
-	# 	anim.play("idle", 0.25)
-
-	# if dragging():
-	# 		anim.play("holding-both", 0.25)
 
 
 func hold(holding):

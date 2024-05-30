@@ -1,7 +1,7 @@
 class_name Warden
 extends CharacterBody3D
 
-const SPEED = 1.0
+const SPEED = 2
 const JUMP_VELOCITY = 4.5
 
 @export var _path: Path3D
@@ -25,7 +25,7 @@ func _process(_delta):
 	if target:
 		_path_timer.start(5.0)
 		_nav.target_position = target.global_position
-	else:
+	elif _path:
 		_nav.target_position = _path.transform * _path.curve.get_point_position(_path_point)
 
 func _physics_process(delta):
@@ -48,17 +48,21 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	_anim.body("idle" if velocity.is_zero_approx() else "walk")
+	var animation = "idle" if velocity.is_zero_approx() else "walk"
+	_anim.body(animation)
 
 	move_and_slide()
 
 func damage(_amount: int):
 	_anim.die()
 	$Dust.restart()
-	disabled.start(3)
+	disabled.start(100)
+	collision_layer = 0
+	disabled.timeout.connect(func(): collision_layer = 1)
 
 func interact(_interactor): # todo ugly marker function
 	pass
 
 func _on_path_timer_timeout():
+	if not _path: return
 	_path_point = (_path_point + 1) % _path.curve.point_count

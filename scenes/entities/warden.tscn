@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dtj71dm34tk6c" path="res://scenes/effects/dust.tscn" id="5_vj1w3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s55pl"]
-radius = 0.2
-height = 1.0
+radius = 0.05
+height = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkopy"]
 size = Vector3(0.650635, 1, 0.8)
@@ -46,7 +46,7 @@ one_shot = true
 [node name="Visuals" parent="." instance=ExtResource("2_6t27u")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_s55pl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

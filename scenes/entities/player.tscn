@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bcqk16go8p0tc"]
+[gd_scene load_steps=25 format=3 uid="uid://bcqk16go8p0tc"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_twwl2"]
 [ext_resource type="Script" path="res://scripts/CharacterAnimator.gd" id="2_313dn"]
@@ -8,11 +8,9 @@
 [ext_resource type="Script" path="res://scripts/components/Bobber.gd" id="4_avnuc"]
 [ext_resource type="PackedScene" uid="uid://bl2rhixbeqfcc" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/shovel.fbx" id="5_7cn6c"]
 [ext_resource type="Script" path="res://scripts/EquippedShovel.gd" id="6_b0h7n"]
-[ext_resource type="PackedScene" uid="uid://8ywsd0jldg21" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pumpkin-carved.fbx" id="6_c62y1"]
 [ext_resource type="PackedScene" uid="uid://dtj71dm34tk6c" path="res://scenes/effects/dust.tscn" id="7_1qths"]
 [ext_resource type="AudioStream" uid="uid://b8nml8xgjqa36" path="res://assets/external/kenney_impact-sounds/Audio/impactPlate_heavy_000.ogg" id="7_6ignx"]
 [ext_resource type="Script" path="res://scripts/Clonk.gd" id="7_sv85r"]
-[ext_resource type="AnimationLibrary" uid="uid://drvdtn7opi2qy" path="res://resources/zombie_anims.res" id="8_cvmat"]
 [ext_resource type="AudioStream" uid="uid://duqux86aksm4w" path="res://assets/external/kenney_impact-sounds/Audio/impactPlate_heavy_001.ogg" id="8_inkba"]
 [ext_resource type="AudioStream" uid="uid://mjdbqtdd7b1o" path="res://assets/external/kenney_impact-sounds/Audio/impactPlate_heavy_002.ogg" id="9_f1vjp"]
 [ext_resource type="AudioStream" uid="uid://cdpdae2kax6hy" path="res://assets/external/kenney_impact-sounds/Audio/impactPlate_heavy_003.ogg" id="10_w1ngk"]
@@ -124,7 +122,7 @@ height = 1.0
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
 script = ExtResource("1_twwl2")
-_speed = 2.0
+_speed = 0.8
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.999522, 0, 0.030902, 0, 1, 0, -0.030902, 0, 0.999522, 0.00896573, 0.548341, -0.158286)
@@ -164,6 +162,7 @@ _area = NodePath("../AttackArea")
 libraries = {
 "": SubResource("AnimationLibrary_ksekg")
 }
+speed_scale = 0.4
 
 [node name="Clonk" type="AudioStreamPlayer" parent="Camera3D/Shovel"]
 stream = SubResource("AudioStreamRandomizer_n61qt")
@@ -177,36 +176,6 @@ volume_db = 18.0
 bus = &"Distort"
 
 [node name="Visuals" parent="." instance=ExtResource("2_khc0j")]
-
-[node name="root" parent="Visuals/RootNode/character_zombie" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0417182, 0)
-
-[node name="torso" parent="Visuals/RootNode/character_zombie/root" index="0"]
-transform = Transform3D(0.878614, 0, 0.216703, 0, 1, 0, -0.195032, 0, 0.976238, -1.44382e-15, 0.223184, -7.21911e-16)
-
-[node name="arm_left" parent="Visuals/RootNode/character_zombie/root/torso" index="0"]
-transform = Transform3D(0.744694, 0.272091, -0.609423, -0.341475, 0.939887, 0.00236374, 0.573432, 0.206342, 0.792842, 0.15, 0.2, 0.0025)
-
-[node name="arm_right" parent="Visuals/RootNode/character_zombie/root/torso" index="1"]
-transform = Transform3D(0.744694, -0.272091, -0.609422, 0.341475, 0.939887, -0.00236385, 0.573431, -0.206342, 0.792842, -0.15, 0.2, 0.0025)
-
-[node name="head" parent="Visuals/RootNode/character_zombie/root/torso" index="2"]
-transform = Transform3D(0.870685, 0, -0.127697, 0, 0.88, 0, 0.127697, 0, 0.870685, -1.44382e-15, 0.26, 2.64698e-22)
-
-[node name="Pumpkin" parent="Visuals/RootNode/character_zombie/root/torso/head" index="0" instance=ExtResource("6_c62y1")]
-transform = Transform3D(1.66272, 0, -0.37155, 0, 1.67592, 0, 0.201443, 0, 1.64421, 1.23933e-16, 0.0703709, -7.40281e-16)
-visible = false
-
-[node name="leg_right" parent="Visuals/RootNode/character_zombie/root" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.824462, 0.565918, 0, -0.565918, 0.824462, -0.074204, 0.223184, -7.21911e-16)
-
-[node name="leg_left" parent="Visuals/RootNode/character_zombie/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.82446, -0.565919, 0, 0.565919, 0.82446, 0.074204, 0.223184, -7.21911e-16)
-
-[node name="AnimationPlayer" parent="Visuals" index="1"]
-libraries = {
-"": ExtResource("8_cvmat")
-}
 
 [node name="Animator" type="Node3D" parent="."]
 script = ExtResource("2_313dn")
@@ -227,5 +196,3 @@ stream = SubResource("AudioStreamRandomizer_87qhy")
 volume_db = 18.0
 bus = &"Distort"
 script = ExtResource("7_sv85r")
-
-[editable path="Visuals"]

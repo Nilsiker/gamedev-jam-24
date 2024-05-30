@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://b8b8pxevb30sr"]
+[gd_scene load_steps=26 format=3 uid="uid://b8b8pxevb30sr"]
 
 [ext_resource type="PackedScene" uid="uid://cta6oncm8bakv" path="res://scenes/effects/screen_filters.tscn" id="1_ifn7y"]
+[ext_resource type="Script" path="res://scripts/ui/PumpkinBar.gd" id="2_47103"]
 [ext_resource type="AudioStream" uid="uid://x1qryonfmpn" path="res://assets/loop.wav" id="3_2xvka"]
 [ext_resource type="PackedScene" uid="uid://bcqk16go8p0tc" path="res://scenes/entities/player.tscn" id="4_s7rld"]
 [ext_resource type="PackedScene" uid="uid://csgyoe480gpqw" path="res://scenes/camera_pivot.tscn" id="5_iisj2"]
@@ -10,10 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://cwppy062i8bbn" path="res://scenes/statics/brick_wall_end.tscn" id="9_xtl42"]
 [ext_resource type="PackedScene" uid="uid://uih6jsqm16j4" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pine.fbx" id="10_x11my"]
 [ext_resource type="PackedScene" uid="uid://cb5p62jsx3cek" path="res://scenes/entities/warden.tscn" id="11_10000"]
-[ext_resource type="Script" path="res://scripts/Shovel.gd" id="11_covrq"]
-[ext_resource type="PackedScene" uid="uid://bl2rhixbeqfcc" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/shovel.fbx" id="12_fw7dl"]
+[ext_resource type="PackedScene" uid="uid://cdcae20oi7dgo" path="res://scenes/shovel.tscn" id="12_d6t7x"]
 [ext_resource type="Script" path="res://scripts/Pumpkin.gd" id="15_nhyk6"]
 [ext_resource type="PackedScene" uid="uid://8ywsd0jldg21" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pumpkin-carved.fbx" id="15_sfxdn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqm1y"]
+bg_color = Color(0.114897, 0.114897, 0.114897, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7k5sq"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_5trqg"]
 vertices = PackedVector3Array(-24.7, 0.2, -1, -9.7, 0.2, -1, -9.1, 0.2, -2.8, -7.6, 0.2, -24.7, -24.7, 0.2, -24.7, -9.1, 0.2, -2.8, -7.3, 0.2, -2.8, -7.6, 0.2, -24.7, -7.3, 0.2, -2.8, -5.2, 0.2, -2.8, -4.9, 0.2, -24.7, -7.6, 0.2, -24.7, -4.9, 0.2, -24.7, -5.2, 0.2, -2.8, -3.4, 0.2, -2.8, -4.9, 0.2, -24.7, -3.4, 0.2, -2.8, -3.1, 0.2, -1, 24.8, 0.2, -1, 24.8, 0.2, -24.7, -4, 0.2, 0.500002, -3.4, 0.2, 0.200001, -3.7, 0.2, -0.4, -4.3, 0.2, -0.699999, -6.4, 0.2, -0.4, -6.1, 0.2, 0.200001, -6.4, 0.2, -0.4, -7, 0.2, -0.699999, -8.8, 0.2, -0.4, -8.8, 0.2, 0.200001, -7, 0.2, 0.500002, -6.1, 0.2, 0.200001, -7, 0.2, -0.699999, -7, 0.2, -1.9, -8.5, 0.2, -1.9, -8.8, 0.2, -0.4, -8.8, 0.2, -0.4, -9.7, 0.2, -1, -24.7, 0.2, -1, -24.7, 0.2, 1.1, -9.4, 0.2, 0.800001, -8.8, 0.2, 0.200001, -8.5, 0.2, 2, -7, 0.2, 2, -7, 0.2, 0.500002, -8.8, 0.2, 0.200001, -6.1, 0.2, 2, -4, 0.2, 2, -4, 0.2, 0.500002, -6.1, 0.2, 0.200001, -4.3, 0.2, -0.699999, -4, 0.2, -1.9, -6.1, 0.2, -1.9, -6.4, 0.2, -0.4, -3.1, 0.2, -1, -3.7, 0.2, -0.4, -3.4, 0.2, 0.200001, -3.1, 0.2, -1, -3.4, 0.2, 0.200001, -3.1, 0.2, 0.800001, 24.8, 0.2, 1.1, 24.8, 0.2, -1, -9.4, 0.2, 2.6, -9.4, 0.2, 0.800001, -24.7, 0.2, 1.1, -7.3, 0.2, 2.9, -9.4, 0.2, 2.6, -24.7, 0.2, 1.1, -24.7, 0.2, 24.8, -7.6, 0.2, 24.8, -3.4, 0.2, 2.9, -5.2, 0.2, 2.9, -4.9, 0.2, 24.8, -3.1, 0.2, 0.800001, -3.4, 0.2, 2.9, -4.9, 0.2, 24.8, 24.8, 0.2, 24.8, 24.8, 0.2, 1.1, -7.6, 0.2, 24.8, -4.9, 0.2, 24.8, -5.2, 0.2, 2.9, -7.3, 0.2, 2.9)
@@ -42,9 +48,6 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ybgdh"]
-size = Vector3(0.2, 0.658887, 0.0571289)
-
 [sub_resource type="Environment" id="Environment_w75s1"]
 background_mode = 1
 background_color = Color(0, 0, 0.180392, 1)
@@ -59,6 +62,29 @@ size = Vector3(0.312256, 0.49585, 0.326172)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wsxgd"]
 
 [node name="Playground" type="Node3D"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 240
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 240
+theme_override_constants/margin_bottom = 40
+
+[node name="PumpkinBar" type="ProgressBar" parent="HUD/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_fqm1y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7k5sq")
+show_percentage = false
+script = ExtResource("2_47103")
 
 [node name="ScreenFilters" parent="." instance=ExtResource("1_ifn7y")]
 
@@ -189,15 +215,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 top_level = true
 curve = SubResource("Curve3D_l3270")
 
-[node name="Shovel" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00684482, 0.0194353, -1.02951)
-script = ExtResource("11_covrq")
-
-[node name="Root Scene" parent="Shovel" instance=ExtResource("12_fw7dl")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Shovel"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.1)
-shape = SubResource("BoxShape3D_ybgdh")
+[node name="Shovel" parent="." instance=ExtResource("12_d6t7x")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w75s1")

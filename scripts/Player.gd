@@ -69,12 +69,12 @@ func _on_player_hid(mode):
 		PlayerChannel.Hide.No:
 			collision_layer = 1 + (1 << 1)
 			EffectsChannel.clear()
-			_speed = 2.0
+			_speed = 0.8
 			$Visuals/RootNode/character_zombie/root/torso/head/Pumpkin.visible = false
 		PlayerChannel.Hide.Pumpkin:
 			collision_layer = 0 
-			EffectsChannel.pumpkin()
 			$Visuals/RootNode/character_zombie/root/torso/head/Pumpkin.visible = true
+			PlayerChannel.equip_pumpkin()
 		PlayerChannel.Hide.Grave:
 			EffectsChannel.grave()
 			_speed = 0

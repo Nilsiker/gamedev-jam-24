@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://c3y4l46ltiylq"]
+[gd_scene load_steps=41 format=3 uid="uid://c3y4l46ltiylq"]
 
 [ext_resource type="PackedScene" uid="uid://c41nbakge3v1g" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/character-zombie.fbx" id="1_wajyx"]
+[ext_resource type="PackedScene" uid="uid://8ywsd0jldg21" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pumpkin-carved.fbx" id="2_n7fpf"]
 
 [sub_resource type="Animation" id="Animation_y2p2o"]
 resource_name = "attack-kick-left"
@@ -2080,6 +2081,8 @@ input_2/reset = true
 filter_enabled = true
 filters = ["RootNode/character_digger/root/torso", "RootNode/character_digger/root/torso/arm_left", "RootNode/character_digger/root/torso/arm_right", "RootNode/character_digger/root/torso/head"]
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1madm"]
+
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_awr7u"]
 input_0/name = "attack"
 input_0/auto_advance = false
@@ -2107,13 +2110,15 @@ animation = &"sprint"
 animation = &"walk"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_t1y28"]
-graph_offset = Vector2(-315.609, 5.2937)
+graph_offset = Vector2(34.391, 69.2937)
 nodes/Action/node = SubResource("AnimationNodeOneShot_07uou")
 nodes/Action/position = Vector2(300, 120)
 nodes/Body/node = SubResource("AnimationNodeTransition_3yxm8")
 nodes/Body/position = Vector2(80, -20)
 nodes/Hold/node = SubResource("AnimationNodeBlend2_vkrya")
 nodes/Hold/position = Vector2(520, 200)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1madm")
+nodes/TimeScale/position = Vector2(680, 180)
 nodes/TorsoAction/node = SubResource("AnimationNodeTransition_awr7u")
 nodes/TorsoAction/position = Vector2(60, 260)
 nodes/attack/node = SubResource("AnimationNodeAnimation_s2ncg")
@@ -2124,12 +2129,12 @@ nodes/holding-both/node = SubResource("AnimationNodeAnimation_2sltp")
 nodes/holding-both/position = Vector2(300, 380)
 nodes/idle/node = SubResource("AnimationNodeAnimation_pdxgg")
 nodes/idle/position = Vector2(-80, -120)
-nodes/output/position = Vector2(700, 200)
+nodes/output/position = Vector2(820, 220)
 nodes/sprint/node = SubResource("AnimationNodeAnimation_ki3du")
 nodes/sprint/position = Vector2(-80, 120)
 nodes/walk/node = SubResource("AnimationNodeAnimation_nvrbp")
 nodes/walk/position = Vector2(-80, 0)
-node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body", 0, &"idle", &"Body", 1, &"walk", &"Body", 2, &"sprint", &"Hold", 0, &"Action", &"Hold", 1, &"holding-both", &"TorsoAction", 0, &"attack", &"TorsoAction", 1, &"grab", &"output", 0, &"Hold"]
+node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body", 0, &"idle", &"Body", 1, &"walk", &"Body", 2, &"sprint", &"Hold", 0, &"Action", &"Hold", 1, &"holding-both", &"TimeScale", 0, &"Hold", &"TorsoAction", 0, &"attack", &"TorsoAction", 1, &"grab", &"output", 0, &"TimeScale"]
 
 [node name="Visuals" instance=ExtResource("1_wajyx")]
 
@@ -2137,33 +2142,38 @@ node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body"
 transform = Transform3D(0.88, 0, 0, 0, 1, 0, 0, 0, 0.9, 0, 0, 0)
 
 [node name="root" parent="RootNode/character_zombie" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0244456, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00504693, 0)
 
 [node name="torso" parent="RootNode/character_zombie/root" index="0"]
-transform = Transform3D(0.892638, 0, 0.127648, 0, 1, 0, -0.114883, 0, 0.991819, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(0.899686, 0, 0.0264224, 0, 1, 0, -0.0237802, 0, 0.99965, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="arm_left" parent="RootNode/character_zombie/root/torso" index="0"]
-transform = Transform3D(0.799401, 0.469705, -0.374612, -0.505026, 0.863092, 0.00448591, 0.325432, 0.185603, 0.927171, 0.15, 0.2, 0.0025)
+transform = Transform3D(0.741135, 0.666668, -0.0791944, -0.668765, 0.743474, 6.34957e-05, 0.0589213, 0.0529154, 0.996859, 0.15, 0.2, 0.0025)
 
 [node name="arm_right" parent="RootNode/character_zombie/root/torso" index="1"]
-transform = Transform3D(0.799402, -0.469705, -0.374612, 0.505026, 0.863092, -0.00448588, 0.325432, -0.185603, 0.927171, -0.15, 0.2, 0.0025)
+transform = Transform3D(0.741136, -0.666668, -0.0791944, 0.668765, 0.743474, -6.34957e-05, 0.0589214, -0.0529154, 0.996859, -0.15, 0.2, 0.0025)
 
 [node name="RightHandSocket" type="Node3D" parent="RootNode/character_zombie/root/torso/arm_right" index="0"]
 transform = Transform3D(0.963368, -2.98058e-08, 0.26818, 4.72751e-08, 1, 2.18463e-08, -0.26818, 0, 0.963368, -0.228327, 0.0156391, 0.0162019)
 
 [node name="head" parent="RootNode/character_zombie/root/torso" index="2"]
-transform = Transform3D(0.876798, 0, -0.0750005, 0, 0.88, 0, 0.0750005, 0, 0.876798, -1.44382e-15, 0.26, 2.64698e-22)
+transform = Transform3D(0.879863, 0, -0.0155023, 0, 0.88, 0, 0.0155023, 0, 0.879863, -1.44382e-15, 0.26, 2.64698e-22)
+
+[node name="Pumpkin" parent="RootNode/character_zombie/root/torso/head" index="0" instance=ExtResource("2_n7fpf")]
+transform = Transform3D(1.66272, 0, -0.37155, 0, 1.67592, 0, 0.201443, 0, 1.64421, 1.23933e-16, 0.0703709, -7.40281e-16)
+visible = false
 
 [node name="leg_right" parent="RootNode/character_zombie/root" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.973887, 0.227036, 0, -0.227036, 0.973887, -0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074204, 0.223184, -7.21911e-16)
 
 [node name="leg_left" parent="RootNode/character_zombie/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.973887, -0.227036, 0, 0.227036, 0.973887, 0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074204, 0.223184, -7.21911e-16)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_38tpx")
 }
+speed_scale = 0.2
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendTree_t1y28")
@@ -2175,6 +2185,7 @@ parameters/Body/current_state = "walk"
 parameters/Body/transition_request = ""
 parameters/Body/current_index = 1
 parameters/Hold/blend_amount = 0.0
+parameters/TimeScale/scale = 0.4
 parameters/TorsoAction/current_state = "attack"
 parameters/TorsoAction/transition_request = ""
 parameters/TorsoAction/current_index = 0
