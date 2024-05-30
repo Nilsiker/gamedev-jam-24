@@ -35,22 +35,21 @@ func _physics_process(delta):
 
 	if disabled.time_left: return
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	if not _nav.is_target_reachable() or _nav.is_target_reached(): return
-
-	var direction = (_nav.get_next_path_position() - global_position).normalized()
-	var distance =  global_position.distance_to(_nav.get_next_path_position())
-	if distance > _nav.target_desired_distance: # fixme magic number
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-		look_at(global_position + Vector3(direction.x, 0, direction.z), Vector3.UP, true)
+	if _nav.is_target_reachable():
+		var direction = (_nav.get_next_path_position() - global_position).normalized()
+		var distance =  global_position.distance_to(_nav.get_next_path_position())
+		if distance > _nav.target_desired_distance: # fixme magic number
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+			look_at(global_position + Vector3(direction.x, 0, direction.z), Vector3.UP, true)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-	var animation = "idle" if velocity.is_zero_approx() else "walk"
-	_anim.body(animation)
+		velocity = Vector3.ZERO
 
+
+	_anim.body("idle" if velocity.is_zero_approx() else "walk")
 	move_and_slide()
 
 func damage(_amount: int):

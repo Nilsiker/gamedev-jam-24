@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b8b8pxevb30sr"]
+[gd_scene load_steps=24 format=3 uid="uid://b8b8pxevb30sr"]
 
 [ext_resource type="PackedScene" uid="uid://cta6oncm8bakv" path="res://scenes/effects/screen_filters.tscn" id="1_ifn7y"]
 [ext_resource type="Script" path="res://scripts/ui/PumpkinBar.gd" id="2_47103"]
@@ -12,8 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://uih6jsqm16j4" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pine.fbx" id="10_x11my"]
 [ext_resource type="PackedScene" uid="uid://cb5p62jsx3cek" path="res://scenes/entities/warden.tscn" id="11_10000"]
 [ext_resource type="PackedScene" uid="uid://cdcae20oi7dgo" path="res://scenes/shovel.tscn" id="12_d6t7x"]
-[ext_resource type="Script" path="res://scripts/Pumpkin.gd" id="15_nhyk6"]
-[ext_resource type="PackedScene" uid="uid://8ywsd0jldg21" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pumpkin-carved.fbx" id="15_sfxdn"]
+[ext_resource type="PackedScene" uid="uid://cnb51irnkr4y0" path="res://scenes/pumpkin.tscn" id="13_vd6jw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqm1y"]
 bg_color = Color(0.114897, 0.114897, 0.114897, 1)
@@ -53,9 +52,6 @@ background_mode = 1
 background_color = Color(0, 0, 0.180392, 1)
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 1.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_otg1f"]
-size = Vector3(0.312256, 0.49585, 0.326172)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6gjth"]
 
@@ -220,14 +216,7 @@ curve = SubResource("Curve3D_l3270")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w75s1")
 
-[node name="Pumpkin" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33725, 0, 1.7205)
-script = ExtResource("15_nhyk6")
-
-[node name="Visuals" parent="Pumpkin" instance=ExtResource("15_sfxdn")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pumpkin"]
-shape = SubResource("BoxShape3D_otg1f")
+[node name="Pumpkin" parent="." instance=ExtResource("13_vd6jw")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)

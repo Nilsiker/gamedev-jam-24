@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnb51irnkr4y0"]
+
+[ext_resource type="Script" path="res://scripts/Pumpkin.gd" id="1_whkcp"]
+[ext_resource type="PackedScene" uid="uid://8ywsd0jldg21" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/pumpkin-carved.fbx" id="2_hrqry"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_otg1f"]
+size = Vector3(0.312256, 0.49585, 0.326172)
+
+[node name="Pumpkin" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33725, 0, 1.7205)
+script = ExtResource("1_whkcp")
+
+[node name="Visuals" parent="." instance=ExtResource("2_hrqry")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_otg1f")

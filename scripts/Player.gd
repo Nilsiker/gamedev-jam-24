@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var _rotation_speed = 0.01
 
 @onready var right_hand_socket: Node3D = $Visuals/RootNode/character_zombie/root/torso/arm_right/RightHandSocket
-@onready var anim: CharacterAnimator = $Animator;
+@onready var _anim: CharacterAnimator = $Animator;
 @onready var _cam: FPSCamera = $Camera3D
 @onready var _shovel: Node3D = $Camera3D/Shovel
 
@@ -17,13 +17,12 @@ func _ready():
 	PlayerChannel.hid.connect(_on_player_hid)
 	PlayerChannel.picked_shovel.connect(_on_player_picked_shovel)
 
-
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	if anim.animation.begins_with("attack"): return
+	if _anim.animation.begins_with("attack"): return
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -35,12 +34,12 @@ func _physics_process(delta):
 		var target_speed = _speed * 1.5 if sprint else _speed # todo make input
 		velocity.x = direction.x * target_speed
 		velocity.z = direction.z * target_speed
-		anim.body("sprint" if sprint else "walk")
-		# anim.rotate_body(direction)
+		# _anim.rotate_body(direction)
 	else:
 		velocity.x = move_toward(velocity.x, 0, _speed)
 		velocity.z = move_toward(velocity.z, 0, _speed)
-		anim.body("idle")
+
+	_anim.body("idle" if velocity.is_zero_approx() else "walk")
 
 	_cam.target_fov = _cam.SPRINT_FOV if sprint else _cam.NORMAL_FOV
 	move_and_slide()
@@ -60,7 +59,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("interact"):
 		handle_interact()
 	elif event.is_action_pressed("attack"):
-		anim.torso("attack")
+		_anim.torso("attack")
 		PlayerChannel.swing()
 
 

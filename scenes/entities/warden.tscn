@@ -17,7 +17,7 @@ size = Vector3(0.650635, 1, 0.8)
 radius = 3.0
 
 [node name="Warden" type="CharacterBody3D" node_paths=PackedStringArray("_path_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+collision_mask = 3
 script = ExtResource("1_x0jcr")
 _path_timer = NodePath("PathTimer")
 
@@ -32,9 +32,9 @@ _ray = NodePath("LineOfSight")
 _angle = 75.0
 
 [node name="LineOfSight" type="RayCast3D" parent="Sight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.6, 0)
+transform = Transform3D(0.970296, 0.241922, 0, -0.241922, 0.970296, 0, 0, 0, 1, 0, 0.6, 0)
 top_level = true
-collision_mask = 3
+collision_mask = 2
 
 [node name="PathTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -50,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_s55pl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-target_desired_distance = 0.25
+target_desired_distance = 0.75
 path_max_distance = 100.01
 
 [node name="Dust" parent="." instance=ExtResource("5_vj1w3")]

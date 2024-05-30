@@ -2138,10 +2138,10 @@ animation = &"idle"
 animation = &"sprint"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nvrbp"]
-animation = &"idle"
+animation = &"walk"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5gcr2"]
-graph_offset = Vector2(-430.267, -46.826)
+graph_offset = Vector2(-420.016, -158.337)
 nodes/Action/node = SubResource("AnimationNodeOneShot_07uou")
 nodes/Action/position = Vector2(280, 200)
 nodes/Body/node = SubResource("AnimationNodeTransition_3yxm8")
@@ -2161,13 +2161,13 @@ nodes/grab/position = Vector2(-120, 460)
 nodes/holding-both/node = SubResource("AnimationNodeAnimation_2sltp")
 nodes/holding-both/position = Vector2(300, 480)
 nodes/idle/node = SubResource("AnimationNodeAnimation_pdxgg")
-nodes/idle/position = Vector2(-200, -100)
+nodes/idle/position = Vector2(-200, 40)
 nodes/output/position = Vector2(960, 140)
 nodes/sprint/node = SubResource("AnimationNodeAnimation_ki3du")
 nodes/sprint/position = Vector2(-200, 160)
 nodes/walk/node = SubResource("AnimationNodeAnimation_nvrbp")
-nodes/walk/position = Vector2(-200, 20)
-node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body", 0, &"idle", &"Body", 1, &"walk", &"Body", 2, &"sprint", &"Die", 0, &"Hold", &"Die", 1, &"die", &"Hold", 0, &"Action", &"Hold", 1, &"holding-both", &"TorsoAction", 0, &"attack", &"TorsoAction", 1, &"grab", &"output", 0, &"Die"]
+nodes/walk/position = Vector2(-200, -80)
+node_connections = [&"Action", 0, &"Body", &"Action", 1, &"TorsoAction", &"Body", 0, &"walk", &"Body", 1, &"idle", &"Body", 2, &"sprint", &"Die", 0, &"Hold", &"Die", 1, &"die", &"Hold", 0, &"Action", &"Hold", 1, &"holding-both", &"TorsoAction", 0, &"attack", &"TorsoAction", 1, &"grab", &"output", 0, &"Die"]
 
 [node name="Visual" instance=ExtResource("1_55q2x")]
 script = ExtResource("2_xafdn")
@@ -2179,10 +2179,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074204, 0.223184, -7.21911e
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074204, 0.223184, -7.21911e-16)
 
 [node name="torso" parent="RootNode/character_digger/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.999915, -0.0130426, 0, 0.0130426, 0.999916, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="arm_left" parent="RootNode/character_digger/root/torso" index="0"]
-transform = Transform3D(0.734227, 0.678904, 4.977e-19, -0.678905, 0.734226, -2.07213e-19, -5.06103e-19, -1.85749e-19, 1, 0.15, 0.2, 0.0025)
+transform = Transform3D(0.707108, 0.707106, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.15, 0.2, 0.0025)
 
 [node name="Root Scene" parent="RootNode/character_digger/root/torso/arm_left" index="0" instance=ExtResource("2_lho4s")]
 transform = Transform3D(0.818564, -0.536276, -0.205819, 0.545539, 0.837973, -0.0137295, 0.179833, -0.101044, 0.978494, 0.381701, -0.242275, 0.0623347)
@@ -2194,7 +2194,7 @@ shadow_opacity = 0.43
 shadow_blur = 4.939
 
 [node name="arm_right" parent="RootNode/character_digger/root/torso" index="1"]
-transform = Transform3D(0.734226, -0.678903, -2.41738e-20, 0.678904, 0.734225, -7.28359e-19, 5.12235e-19, 5.18368e-19, 0.999999, -0.15, 0.2, 0.0025)
+transform = Transform3D(0.707107, -0.707105, 0, 0.707105, 0.707106, 0, 0, 0, 0.999999, -0.15, 0.2, 0.0025)
 
 [node name="RightHandSocket" type="Node3D" parent="RootNode/character_digger/root/torso/arm_right" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.984223, -0.17693, 0, 0.17693, 0.984223, -0.219272, 0.00334847, 0.0994912)
@@ -2203,7 +2203,7 @@ transform = Transform3D(1, 0, 0, 0, 0.984223, -0.17693, 0, 0.17693, 0.984223, -0
 transform = Transform3D(1, 3.35276e-08, 2.98023e-08, -1.49012e-08, 0.984224, 0.17693, 0, -0.17693, 0.984224, 0, 0, 0)
 
 [node name="head" parent="RootNode/character_digger/root/torso" index="2"]
-transform = Transform3D(0.999914, 0, -0.0130425, 0, 1, 0, 0.0130425, 0, 0.999914, -1.44382e-15, 0.26, 3.60956e-16)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.44382e-15, 0.26, 3.60956e-16)
 
 [node name="AnimationPlayer" parent="." index="1"]
 deterministic = true
@@ -2218,9 +2218,9 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Action/active = false
 parameters/Action/internal_active = false
 parameters/Action/request = 0
-parameters/Body/current_state = "walk"
+parameters/Body/current_state = ""
 parameters/Body/transition_request = ""
-parameters/Body/current_index = 0
+parameters/Body/current_index = -1
 parameters/Die/active = false
 parameters/Die/internal_active = false
 parameters/Die/request = 0
