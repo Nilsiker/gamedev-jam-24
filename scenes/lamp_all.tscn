@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://hxu7kiudp7a4"]
+
+[ext_resource type="PackedScene" uid="uid://bw0vjaq0p7i20" path="res://assets/external/kenney_graveyard-kit/Models/FBX format/lightpost-all.fbx" id="1_4qcya"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5nvy"]
+size = Vector3(0.165039, 1, 0.180664)
+
+[node name="LampAll" instance=ExtResource("1_4qcya")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RootNode/lightpost_all" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/lightpost_all/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_f5nvy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(1, 1, 0.839216, 1)
+light_size = 1.0
+omni_range = 8.0
