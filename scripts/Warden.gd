@@ -40,7 +40,8 @@ func _physics_process(delta):
 	if _nav.is_target_reachable():
 		var direction = (_nav.get_next_path_position() - global_position).normalized()
 		var distance = global_position.distance_to(_nav.get_next_path_position())
-		_anim.rotate_body(direction)
+		if direction:
+			look_at(global_position + Vector3(direction.x, 0, direction.z), Vector3.UP, true)
 		if distance > _nav.target_desired_distance: 
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
