@@ -14,6 +14,8 @@ signal pumpkin_withered()
 signal picked_shovel
 signal swung
 
+var health: int = 2
+
 var timer: SceneTreeTimer
 const PUMPKIN_TIMER_MAX = 6
 
@@ -34,9 +36,12 @@ func equip_pumpkin():
 func swing():
 	swung.emit()
 
+func damage(amount):
+	health -= amount
+	fire_health_changed(health)
+
 func _process(_delta):
 	if timer:
-		print("percentage ", (timer.time_left / PUMPKIN_TIMER_MAX) * 100.0)
 		pumpkin_wither_update.emit((timer.time_left / PUMPKIN_TIMER_MAX) * 100.0)
 
 func _on_timeout():

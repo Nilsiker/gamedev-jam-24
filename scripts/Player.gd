@@ -59,7 +59,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("interact"):
 		handle_interact()
 	elif event.is_action_pressed("attack"):
-		_anim.torso("attack")
+		_anim.attack()
 		PlayerChannel.swing()
 
 
@@ -75,9 +75,12 @@ func _on_player_hid(mode):
 			$Visuals/RootNode/character_zombie/root/torso/head/Pumpkin.visible = true
 			PlayerChannel.equip_pumpkin()
 		PlayerChannel.Hide.Grave:
+			collision_layer = 0 
 			EffectsChannel.grave()
 			_speed = 0
-	print(collision_layer)
+
+func damage(amount):
+	PlayerChannel.damage(amount)
 
 
 func _on_player_picked_shovel():

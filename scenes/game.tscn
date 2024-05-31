@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c6keo7s10gg6"]
+[gd_scene load_steps=31 format=3 uid="uid://c6keo7s10gg6"]
 
 [ext_resource type="Theme" uid="uid://smavd03xpxa1" path="res://resources/theme_label_default.tres" id="1_boai5"]
 [ext_resource type="PackedScene" uid="uid://di6uh68bstbkv" path="res://scenes/grave.tscn" id="1_edoxm"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cdcae20oi7dgo" path="res://scenes/shovel.tscn" id="16_gpjcv"]
 [ext_resource type="PackedScene" uid="uid://cb5p62jsx3cek" path="res://scenes/entities/warden.tscn" id="18_xxeul"]
 [ext_resource type="PackedScene" uid="uid://dn51hj4n3jvfy" path="res://scenes/entities/skelly.tscn" id="19_lnsac"]
+[ext_resource type="PackedScene" uid="uid://bcqk16go8p0tc" path="res://scenes/entities/player.tscn" id="20_u3qc4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2ou4"]
 bg_color = Color(1, 1, 1, 1)
@@ -74,6 +75,7 @@ fog_density = 0.5
 [node name="Game" type="Node3D"]
 
 [node name="Menu" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ScreenFilters" parent="Menu" instance=ExtResource("1_se158")]
 
@@ -108,7 +110,6 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_i2ou4")
 
 [node name="Play" type="Button" parent="Menu/MarginContainer/MainMenu"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_boai5")
@@ -120,7 +121,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_i6ejr")
 text = "  Play"
 
 [node name="Credits" type="Button" parent="Menu/MarginContainer/MainMenu"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_boai5")
@@ -132,7 +132,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_i6ejr")
 text = "  Credits"
 
 [node name="Quit" type="Button" parent="Menu/MarginContainer/MainMenu"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_boai5")
@@ -480,3 +479,5 @@ environment = SubResource("Environment_bhh0g")
 transform = Transform3D(0.637055, -0.231646, 0.735187, -0.0478186, 0.940062, 0.337635, -0.769333, -0.250248, 0.587794, 0, 0, 0)
 light_energy = 0.5
 shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("20_u3qc4")]

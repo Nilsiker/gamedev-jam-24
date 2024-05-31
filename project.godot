@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gamedev-jam-24"
-run/main_scene="res://scenes/playground.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"

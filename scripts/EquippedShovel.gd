@@ -18,9 +18,8 @@ func _on_player_swung():
 
 func _hit():
 	if not _area.get_overlapping_bodies(): return
-	print(_area.get_overlapping_bodies())
-	for body in _area.get_overlapping_bodies():
-		if not body.has_method("damage"): continue
+	for body in _area.get_overlapping_bodies() :
+		if not body.has_method("damage") or body is Player: continue
 		$Clonk.play()
 		$Chime.play()
 		var dust = _dust.instantiate() as CPUParticles3D

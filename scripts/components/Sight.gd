@@ -21,7 +21,6 @@ func _process(_delta):
 	if not closest_in_angle: 
 		target = null
 		return
-	print(closest_in_angle.global_position)
 	_ray.target_position = closest_in_angle.global_position - _ray.global_position
 	_ray.rotation = Vector3.ZERO	# TODO hack, why is this needed to orient ray??
 	if _ray.is_colliding() and _ray.get_collider() is Player:

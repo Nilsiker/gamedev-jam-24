@@ -11,15 +11,16 @@ radius = 0.05
 height = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkopy"]
-size = Vector3(0.650635, 1, 0.8)
+size = Vector3(0.650635, 1, 0.774585)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qtmkk"]
 radius = 3.0
 
-[node name="Warden" type="CharacterBody3D" node_paths=PackedStringArray("_path_timer")]
+[node name="Warden" type="CharacterBody3D" node_paths=PackedStringArray("_path_timer", "_attack_timer")]
 collision_mask = 3
 script = ExtResource("1_x0jcr")
 _path_timer = NodePath("PathTimer")
+_attack_timer = NodePath("AttackTimer")
 
 [node name="CharacterAnimator" type="Node3D" parent="."]
 script = ExtResource("2_e15pi")
@@ -36,6 +37,10 @@ transform = Transform3D(0.970296, 0.241922, 0, -0.241922, 0.970296, 0, 0, 0, 1, 
 top_level = true
 collision_mask = 2
 
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="PathTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
@@ -50,7 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_s55pl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-target_desired_distance = 0.75
+target_desired_distance = 0.8
 path_max_distance = 100.01
 
 [node name="Dust" parent="." instance=ExtResource("5_vj1w3")]
@@ -58,7 +63,7 @@ path_max_distance = 100.01
 [node name="DamageArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.387292)
 shape = SubResource("BoxShape3D_tkopy")
 
 [node name="AttentionArea" type="Area3D" parent="."]
