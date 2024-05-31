@@ -41,7 +41,7 @@ func _physics_process(delta):
 		var direction = (_nav.get_next_path_position() - global_position).normalized()
 		var distance = global_position.distance_to(_nav.get_next_path_position())
 		_anim.rotate_body(direction)
-		if distance > _nav.target_desired_distance: # fixme magic number
+		if distance > _nav.target_desired_distance: 
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
 		else:

@@ -11,10 +11,10 @@ radius = 0.05
 height = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkopy"]
-size = Vector3(0.650635, 1, 0.774585)
+size = Vector3(0.650635, 1, 1.23007)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qtmkk"]
-radius = 3.0
+radius = 6.0
 
 [node name="Warden" type="CharacterBody3D" node_paths=PackedStringArray("_path_timer", "_attack_timer")]
 collision_mask = 3
@@ -38,11 +38,11 @@ top_level = true
 collision_mask = 2
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="PathTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="DisabledTimer" type="Timer" parent="."]
@@ -63,7 +63,7 @@ path_max_distance = 100.01
 [node name="DamageArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.387292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.615032)
 shape = SubResource("BoxShape3D_tkopy")
 
 [node name="AttentionArea" type="Area3D" parent="."]

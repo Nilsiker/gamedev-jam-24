@@ -12,12 +12,14 @@ extends CharacterBody3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var active = true
 
 func _ready():
 	PlayerChannel.hid.connect(_on_player_hid)
 	PlayerChannel.picked_shovel.connect(_on_player_picked_shovel)
 
 func _physics_process(delta):
+	if not active: return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -46,6 +48,8 @@ func _physics_process(delta):
 
 
 func _unhandled_input(event):
+	if not active: return
+
 	if event.is_action_pressed("lock_cursor"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_VISIBLE
 	elif event is InputEventMouseMotion:
@@ -96,3 +100,7 @@ func handle_interact():
 		elif interactable.get_parent().has_method("interact"):
 			interactable.get_parent().interact(self)
 			return
+
+
+func set_active(new_active):
+	self.active = new_active

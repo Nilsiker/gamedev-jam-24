@@ -13,7 +13,7 @@ func _ready():
 	_area.body_exited.connect(_on_area_body_exited)
 
 func _process(_delta):
-	_area.get_node("Collider").shape.radius = 8 if target else 4
+	_area.get_node("Collider").shape.radius = 10 if target else 6
 	_ray.global_position = global_position
 
 

@@ -24,5 +24,6 @@ func attack():
 
 func rotate_body(direction):
 	if direction:
+		print(direction)
 		var target = global_transform.looking_at(global_position + direction, Vector3.UP, true)
 		get_parent().global_transform = get_parent().global_transform.interpolate_with(target, 0.5)
