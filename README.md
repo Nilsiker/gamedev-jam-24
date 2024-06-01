@@ -1,6 +1,6 @@
-![alt text](media/image.png)
-
 > ⚠️ Due to lack of time, I never finished this! The repo is kept as a "lessons learned".
+
+![alt text](media/image.png)
 
 *They say that once in a blue moon, a deceased soul is given one final chance to return to the living world.*
 
