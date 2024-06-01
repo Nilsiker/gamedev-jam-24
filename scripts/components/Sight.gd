@@ -18,12 +18,12 @@ func _process(_delta):
 
 
 	var closest_in_angle = _get_closest_target_in_angle()
-	if not closest_in_angle: 
+	if not closest_in_angle:
 		target = null
 		return
 	_ray.target_position = closest_in_angle.global_position - _ray.global_position
-	_ray.rotation = Vector3.ZERO	# TODO hack, why is this needed to orient ray??
-	if _ray.is_colliding() and _ray.get_collider() is Player:
+	_ray.rotation = Vector3.ZERO	# TODO hack, why is this needed to orient ray?? 
+	if _ray.is_colliding() and _ray.get_collider() is Player: 
 		target = _ray.get_collider()
 	else: target = null
 

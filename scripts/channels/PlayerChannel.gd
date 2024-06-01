@@ -19,8 +19,8 @@ var health: int = 2
 var timer: SceneTreeTimer
 const PUMPKIN_TIMER_MAX = 6
 
-func fire_health_changed(health):
-	health_changed.emit(health)
+func fire_health_changed(new_health):
+	health_changed.emit(new_health)
 
 func hide(mode: Hide):
 	hid.emit(mode)

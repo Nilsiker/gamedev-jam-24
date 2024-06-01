@@ -5,6 +5,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-func interact(interactor):
+func interact(_interactor):
 	PlayerChannel.pick_shovel()
 	queue_free()

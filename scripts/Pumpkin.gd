@@ -6,6 +6,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-func interact(interactor):
+func interact(_interactor):
 	PlayerChannel.hide(PlayerChannel.Hide.Pumpkin)
 	queue_free()

@@ -1,5 +1,7 @@
 ![alt text](media/image.png)
 
+> ⚠️ Due to lack of time, I never finished this! The repo is kept as a "lessons learned".
+
 *They say that once in a blue moon, a deceased soul is given one final chance to return to the living world.*
 
 *One last stand.*
@@ -28,8 +30,8 @@ The goal is simple - make your way out of the cemetery. Kudos if you're fast abo
 
 ## Some background
 
-This game was made in 10 days for the GameDev.tv Jam 2024 by me.
+This game was intended for the GameDev.tv Jam 2024. Due to work and life constraints I was unable to complete the game.
 
 * Developed using Godot 4.2
 * Uses Kenney assets (Graveyard Kit, Particles Pack)
-* Created through invaluable spitballing with my partner, Sara ❤️
+* Game idea by spitballing with my partner, Sara ❤️
